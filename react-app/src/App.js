@@ -1,48 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
-import { authenticate } from './store/session';
+
+import * as sessionActions from './store/session';
+
+// Import non-auth components
+import SplashNavigation from './components/Splash/Navigation';
+import Footer from './components/Splash/Footer';
+import SplashPage from './components/Splash/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const user = useSelector(state => state.session.user)
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async() => {
-      await dispatch(authenticate());
-      setLoaded(true);
+      await dispatch(sessionActions.authenticate()).then(() => setLoaded(true))
     })();
-  }, [dispatch]);
+  }, [dispatch, loaded]);
 
-  if (!loaded) {
-    return null;
+  if (!user) {
+    return (
+      <BrowserRouter>
+        <SplashNavigation />
+          <Switch>
+            <Route path='/' exact={true}>
+              <SplashPage view='normal'/>
+            </Route>
+            <Route path='/login' exact={true}>
+              <SplashPage view='login'/>
+            </Route>
+            <Route path='/signup' exact={true}>
+              <SplashPage view='signup'/>
+            </Route>
+            <Route>
+              <Redirect to='/' />
+            </Route>
+          </Switch>
+        <Footer />
+      </BrowserRouter>
+    )
   }
 
-  return (
+  return loaded && (
     <BrowserRouter>
-      <NavBar />
+
       <Switch>
+        <Route path='/' exact={true}>
+
+        </Route>
         <Route path='/login' exact={true}>
-          <LoginForm />
+
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
