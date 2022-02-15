@@ -20,6 +20,14 @@ const LoginForm = () => {
     }
   };
 
+  const onDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data) {
+      setErrors(data)
+    }
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -67,6 +75,9 @@ const LoginForm = () => {
           <button type='submit'>Login</button>
         </div>
       </form>
+      <div className='button-container-demo'>
+        <button type='button' onClick={onDemo}>Demo User</button>
+      </div>
     </div>
   );
 };
