@@ -2,34 +2,40 @@ from app.models import db, Recipe, Category
 
 # Adds a demo user, you can add other users here if you want
 def seed_recipes():
-    dog_park = Recipe(
-        name='Bower Park', description='5019 N Sawyer Ave', user_id='Boise', state='ID', zipcode='83714', phone='9113452654', website='http://idahodogpark.com/')
-    pet_store = Recipe(
-        name='Puppyland Idaho', address='3100 E Florence Dr STE 102', city='Meridian', state='ID', zipcode='83642', phone='9127459878', website='https://puppylandidaho.com/')
-    groomer = Recipe(
-        name='The Pet Groomers', address='1921 Wildwood St', city='Boise', state='ID', zipcode='83713', phone='9114587563', website='http://thepetgroomers.net/')
-    vet = Recipe(
-        name="Skyline Animal Hospital", address='1378 Grizzly Ave', city='Idaho Falls', state='ID', zipcode='83402', phone='7685945489', website='http://skylineanimalhospital.com/')
-    walker = Recipe(
-        name='The Pet Sitter of Boise', address='12350 W Lachlan St', city='Boise', state='ID', zipcode='83709', phone='4569871234', website='http://thepetsitterofboise.com/')
+    ramen = Recipe(
+        name='Romaine Ramen', description='Ramen but with a flair of fiber!', user_id=1)
+    cereal = Recipe(
+        name='Banana Honey Nut Cheerio', description='Nanner, honey, and nuts? Yes, please.', user_id=2)
+    grilled_cheese = Recipe(
+        name='Grilled Cheese Almost Moldy', description='Grilled cheese when your bread is about to grow antibiotics.', user_id=3)
+    spam_sandwich = Recipe(
+        name='Spamich', description='Spam and bread? Yes, bro.', user_id=1)
+    vienna_bread = Recipe(
+        name='Bread Sog Sig', description='A taste of Italy in a can, baby.', user_id=2)
+    water_bread = Recipe(
+        name='Wet Toast', description='Some bread. Some wah wah.', user_id=3)
 
-    groomer_cat = Category(name='Groomers')
-    dog_park_cat = Category(name='Parks')
-    walker_cat = Category(name='Walkers')
-    vet_cat = Category(name="Veterinarians")
-    pet_store_cat = Category(name='Pet Stores')
+    breakfast_cat = Category(name='Breakfast')
+    lunch_cat = Category(name='Lunch')
+    snack_cat = Category(name='Snack')
+    dinner_cat = Category(name="Dinner")
 
-    dog_park.categories.append(dog_park_cat)
-    pet_store.categories.append(pet_store_cat)
-    groomer.categories.append(groomer_cat)
-    vet.categories.append(vet_cat)
-    walker.categories.append(walker_cat)
 
-    db.session.add(dog_park)
-    db.session.add(pet_store)
-    db.session.add(groomer)
-    db.session.add(vet)
-    db.session.add(walker)
+    ramen.categories.append(lunch_cat)
+    cereal.categories.append(breakfast_cat)
+    grilled_cheese.categories.append(snack_cat)
+    spam_sandwich.categories.append(dinner_cat)
+    vienna_bread.categories.append(lunch_cat)
+    water_bread.categories.append(dinner_cat)
+
+
+    db.session.add(ramen)
+    db.session.add(cereal)
+    db.session.add(grilled_cheese)
+    db.session.add(spam_sandwich)
+    db.session.add(vienna_bread)
+    db.session.add(water_bread)
+
 
     db.session.commit()
 
