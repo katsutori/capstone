@@ -13,6 +13,7 @@ import SplashPage from './components/Splash/SplashPage';
 
 // Import auth components
 import LogoutButton from './components/auth/LogoutButton'
+import AppNavigation from './components/app/AppNavigation';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,11 +51,10 @@ function App() {
 
   return loaded && (
     <BrowserRouter>
-
+      <AppNavigation />
       <Switch>
         <Route path='/' exact={true}>
           <h1>Hi</h1>
-          <LogoutButton />
         </Route>
         <Route path='/login' exact={true}>
           <SplashPage view='login'/>
@@ -66,6 +66,7 @@ function App() {
           <h1>There's no food here.</h1>
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
