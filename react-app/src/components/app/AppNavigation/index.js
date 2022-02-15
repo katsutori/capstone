@@ -6,6 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import LogoutButton from '../../auth/LogoutButton'
 
 import logo from '../../../img/logo.png'
+import './AppNavigation.css'
 
 function AppNavigation() {
     const [show, setShow] = useState(false)
@@ -42,6 +43,7 @@ function AppNavigation() {
                     </form>
                 </div>
                 <div className='splash-navigation'>
+                    <Link className='recipe-button' to='/'>ADD RECIPE</Link>
                     <div className="dropdown">
                             <button className="dropbtn">CATEGORIES
                                 <i className="fa fa-caret-down"></i>
