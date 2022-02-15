@@ -37,7 +37,7 @@ function SplashNavigation() {
                         value={formValue}
                         onChange={e=>setFormValue(e.target.value)}
                         className='search-input'
-                        placeholder='What could you like to cook?'
+                        placeholder='What would you like to cook?'
                         />
                     </form>
                 </div>
