@@ -2,6 +2,11 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+recipes_categories = db.Table(
+    "recipe_category",
+    db.Column("recipe_id", db.Integer, db.ForeignKey("recipes.id"), primary_key=True),
+    db.Column("category_id", db.Integer, db.ForeignKey("categories.is"), primary_key=True)
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -13,6 +18,7 @@ class User(db.Model, UserMixin):
 
     recipes = db.relationship("Recipe", back_populates='user', cascade='all, delete-orphan')
     reviews = db.relationship("Review", back_populates='user', cascade='all, delete-orphan')
+    photos = db.relationship("Photo", back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -46,6 +52,8 @@ class Recipe(db.model):
     user = db.relationship("User", back_populates="recipes")
     reviews = db.relationship("Review", back_populates="recipe", cascade='all, delete-orphan')
     ingredients = db.relationship("Ingredient", back_populates='recipe', cascade='all, delete-orphan')
+    steps = db.relationship("Step", back_populates='recipe', cascade='all, delete-orphan')
+    photos = db.relationship("Photo", back_populates='recipe', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
@@ -105,9 +113,52 @@ class Ingredient(db.model):
 
     recipe = db.relationship("Recipe", back_populates='ingredients')
 
-    def to_dic(self):
+    def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             "recipe_id": self.recipe_id
+        }
+
+
+class Step(db.model):
+    __tablename__ = 'steps'
+
+    id = db.Column(db.Integer, primary_key=True)
+    step = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
+
+    recipe = db.relationship("Recipe", back_populates='steps')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'step': self.step,
+            "description": self.description,
+            "recipe_id": self.recipe_id
+        }
+
+
+class Photo(db.model):
+    __tablename__ = 'photos'
+
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
+    time_created = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    time_updated = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    user = db.relationship("User", back_populates='photos')
+    recipe = db.relationship("Recipe", back_populates='photos')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'url': self.url,
+            'user_id': self.user_id,
+            'recipe_id': self.recipe_id,
+            'time_created': self.time_created,
+            'time_updated': self.time_updated,
         }
