@@ -140,7 +140,7 @@
 }
 
 .signup-button:focus {
-    box-shadow: inset 0 0 0 2px rgb(0 0 0 / 60%);
+
     outline: none;
 }
 
