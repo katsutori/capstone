@@ -11,6 +11,9 @@ import SplashNavigation from './components/Splash/Navigation';
 import Footer from './components/Splash/Footer';
 import SplashPage from './components/Splash/SplashPage';
 
+// Import auth components
+import LogoutButton from './components/auth/LogoutButton'
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector(state => state.session.user)
@@ -50,13 +53,14 @@ function App() {
 
       <Switch>
         <Route path='/' exact={true}>
-
+          <h1>Hi</h1>
+          <LogoutButton />
         </Route>
         <Route path='/login' exact={true}>
-
+          <SplashPage view='login'/>
         </Route>
         <Route path='/sign-up' exact={true}>
-
+          <SplashPage view='signup'/>
         </Route>
       </Switch>
     </BrowserRouter>
