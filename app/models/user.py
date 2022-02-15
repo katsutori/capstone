@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
         }
 
 
-class Recipe(db.model):
+class Recipe(db.Model):
     __tablename__ = "recipes"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -66,7 +66,7 @@ class Recipe(db.model):
         }
 
 
-class Review(db.model):
+class Review(db.Model):
     __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -92,7 +92,7 @@ class Review(db.model):
         }
 
 
-class Category(db.model):
+class Category(db.Model):
     __tablename__ = "categories"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -104,7 +104,7 @@ class Category(db.model):
             'name': self.name
         }
 
-class Ingredient(db.model):
+class Ingredient(db.Model):
     __tablename__ = 'ingredients'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -121,7 +121,7 @@ class Ingredient(db.model):
         }
 
 
-class Step(db.model):
+class Step(db.Model):
     __tablename__ = 'steps'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -140,7 +140,7 @@ class Step(db.model):
         }
 
 
-class Photo(db.model):
+class Photo(db.Model):
     __tablename__ = 'photos'
 
     id = db.Column(db.Integer, primary_key=True)
