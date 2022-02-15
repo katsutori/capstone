@@ -55,6 +55,7 @@ class Recipe(db.Model):
     ingredients = db.relationship("Ingredient", back_populates='recipe', cascade='all, delete-orphan')
     steps = db.relationship("Step", back_populates='recipe', cascade='all, delete-orphan')
     photos = db.relationship("Photo", back_populates='recipe', cascade='all, delete-orphan')
+    categories = db.relationship("Category", back_populates='recipe', secondary=recipes_categories)
 
     def to_dict(self):
         return {
@@ -98,6 +99,8 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
+
+    recipe = db.relationship("Recipe", back_populates='categories', secondary=recipes_categories)
 
     def to_dict(self):
         return {

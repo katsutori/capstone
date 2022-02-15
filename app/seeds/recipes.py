@@ -45,7 +45,7 @@ def seed_recipes():
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
-def undo_businesses():
-    db.session.execute('TRUNCATE businesses RESTART IDENTITY CASCADE;')
+def undo_recipes():
+    db.session.execute('TRUNCATE recipes RESTART IDENTITY CASCADE;')
     db.session.execute('TRUNCATE categories RESTART IDENTITY CASCADE;')
     db.session.commit()
