@@ -6,7 +6,7 @@ from sqlalchemy import func
 recipes_categories = db.Table(
     "recipe_category",
     db.Column("recipe_id", db.Integer, db.ForeignKey("recipes.id"), primary_key=True),
-    db.Column("category_id", db.Integer, db.ForeignKey("categories.is"), primary_key=True)
+    db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
