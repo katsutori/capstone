@@ -59,8 +59,11 @@ function App() {
         <Route path='/login' exact={true}>
           <SplashPage view='login'/>
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path='/signup' exact={true}>
           <SplashPage view='signup'/>
+        </Route>
+        <Route>
+          <h1>There's no food here.</h1>
         </Route>
       </Switch>
     </BrowserRouter>
