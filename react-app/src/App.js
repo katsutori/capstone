@@ -18,6 +18,7 @@ import SplashPage from './components/Splash/SplashPage';
 import HomeApp from './components/app/HomeApp';
 import AppNavigation from './components/app/AppNavigation';
 import SingleRecipe from './components/app/HomeApp/SingleRecipe';
+import NewRecipeForm from './components/app/HomeApp/AddRecipeForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -71,6 +72,9 @@ function App() {
         </Route>
         <Route path='/signup' exact={true}>
           <SplashPage view='signup'/>
+        </Route>
+        <Route path='/recipes/new' exact={true}>
+          <NewRecipeForm />
         </Route>
         <Route path='/recipes/:id' exact={true}>
           <SingleRecipe />

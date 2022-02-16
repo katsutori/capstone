@@ -43,7 +43,7 @@ function AppNavigation() {
                     </form>
                 </div>
                 <div className='splash-navigation'>
-                    <Link className='recipe-button' to='/'>ADD RECIPE</Link>
+                    <Link className='recipe-button' to='/recipes/new'>ADD RECIPE</Link>
                     <div className="dropdown">
                             <button className="dropbtn">CATEGORIES
                                 <i className="fa fa-caret-down"></i>
