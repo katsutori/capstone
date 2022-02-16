@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 
+
+// Import States
 import * as sessionActions from './store/session';
+import { getAllRecipes } from './store/recipe';
 
 // Import non-auth components
 import SplashNavigation from './components/Splash/Navigation';
@@ -12,7 +15,7 @@ import Footer from './components/Splash/Footer';
 import SplashPage from './components/Splash/SplashPage';
 
 // Import auth components
-import LogoutButton from './components/auth/LogoutButton'
+import HomeApp from './components/app/HomeApp';
 import AppNavigation from './components/app/AppNavigation';
 
 function App() {
@@ -21,8 +24,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     (async() => {
       await dispatch(sessionActions.authenticate()).then(() => setLoaded(true))
+      await dispatch(getAllRecipes())
     })();
   }, [dispatch, loaded]);
 
@@ -54,7 +62,7 @@ function App() {
       <AppNavigation />
       <Switch>
         <Route path='/' exact={true}>
-          <h1>Hi</h1>
+          <HomeApp />
         </Route>
         <Route path='/login' exact={true}>
           <SplashPage view='login'/>
