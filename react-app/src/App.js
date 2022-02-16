@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 
+
+// Import States
 import * as sessionActions from './store/session';
+import { getAllRecipes } from './store/recipe';
 
 // Import non-auth components
 import SplashNavigation from './components/Splash/Navigation';
@@ -21,8 +24,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     (async() => {
       await dispatch(sessionActions.authenticate()).then(() => setLoaded(true))
+      await dispatch(getAllRecipes())
     })();
   }, [dispatch, loaded]);
 
