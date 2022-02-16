@@ -8,4 +8,4 @@ class NewRecipeForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     instructions = StringField('Instructions', validators=[DataRequired()])
-    category = SelectField('category', choices=["Lunch", "Breakfast", "Snack", "Dinner", "Walkers"], validators=[DataRequired()])
+    category = SelectField('category', choices=["Lunch", "Breakfast", "Snack", "Dinner", "Soup", "Salad", "Drinks"], validators=[DataRequired()])
