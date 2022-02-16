@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 
 // Import components
 import FeaturedRecipe from './Featured'
+import RecipeRoll from './RecipeRoll'
 import './HomeApp.css'
 
 
@@ -14,6 +15,7 @@ const HomeApp = () => {
         <>
             <div className='home-container'>
                 <FeaturedRecipe />
+                <RecipeRoll />
             </div>
         </>
     )
