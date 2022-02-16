@@ -15,7 +15,7 @@ import Footer from './components/Splash/Footer';
 import SplashPage from './components/Splash/SplashPage';
 
 // Import auth components
-import LogoutButton from './components/auth/LogoutButton'
+import HomeApp from './components/app/HomeApp';
 import AppNavigation from './components/app/AppNavigation';
 
 function App() {
@@ -62,7 +62,7 @@ function App() {
       <AppNavigation />
       <Switch>
         <Route path='/' exact={true}>
-          <h1>Hi</h1>
+          <HomeApp />
         </Route>
         <Route path='/login' exact={true}>
           <SplashPage view='login'/>
