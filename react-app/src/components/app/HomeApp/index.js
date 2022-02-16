@@ -1,6 +1,8 @@
-import React, { useReducer } from 'react'
+import React from 'react'
 import {useSelector} from 'react-redux'
 
+// Import components
+import FeaturedRecipe from './Featured'
 import './HomeApp.css'
 
 
@@ -10,10 +12,8 @@ const HomeApp = () => {
 
     return (
         <>
-            <div>
-                {recipes.map((recipe, idx) => (
-                    <p key={idx}>{recipe.name}</p>
-                ))}
+            <div className='home-container'>
+                <FeaturedRecipe />
             </div>
         </>
     )
