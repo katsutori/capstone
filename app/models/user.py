@@ -46,6 +46,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
+    instructions = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     time_created = db.Column(db.DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(db.DateTime(timezone=True), server_default=func.now())
@@ -53,7 +54,6 @@ class Recipe(db.Model):
     user = db.relationship("User", back_populates="recipes")
     reviews = db.relationship("Review", back_populates="recipe", cascade='all, delete-orphan')
     ingredients = db.relationship("Ingredient", back_populates='recipe', cascade='all, delete-orphan')
-    steps = db.relationship("Step", back_populates='recipe', cascade='all, delete-orphan')
     photos = db.relationship("Photo", back_populates='recipe', cascade='all, delete-orphan')
     categories = db.relationship("Category", back_populates='recipe', secondary=recipes_categories)
 
@@ -121,25 +121,6 @@ class Ingredient(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            "recipe_id": self.recipe_id
-        }
-
-
-class Step(db.Model):
-    __tablename__ = 'steps'
-
-    id = db.Column(db.Integer, primary_key=True)
-    step = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
-
-    recipe = db.relationship("Recipe", back_populates='steps')
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'step': self.step,
-            "description": self.description,
             "recipe_id": self.recipe_id
         }
 

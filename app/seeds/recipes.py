@@ -3,17 +3,17 @@ from app.models import db, Recipe, Category
 # Adds a demo user, you can add other users here if you want
 def seed_recipes():
     ramen = Recipe(
-        name='Romaine Ramen', description='Ramen but with a flair of fiber!', user_id=1)
+        name='Romaine Ramen', description='Ramen but with a flair of fiber!', user_id=1, instructions='Buy instant ramen. Boil Noodles. Add lettuce. Eat.')
     cereal = Recipe(
-        name='Banana Honey Nut Cheerio', description='Nanner, honey, and nuts? Yes, please.', user_id=2)
+        name='Banana Honey Nut Cheerio', description='Nanner, honey, and nuts? Yes, please.', user_id=2, instructions='Pour cereal in a bowl. Add some milk. Slice a banana. Toss banana in cereal.')
     grilled_cheese = Recipe(
-        name='Grilled Cheese Almost Moldy', description='Grilled cheese when your bread is about to grow antibiotics.', user_id=3)
+        name='Grilled Cheese Almost Moldy', description='Grilled cheese when your bread is about to grow antibiotics.', user_id=3, instructions='Find cheese that is almost bad. Toss it in between two slices of bread. Put it on a frying pan until the bread is nice and brown.')
     spam_sandwich = Recipe(
-        name='Spamich', description='Spam and bread? Yes, bro.', user_id=1)
+        name='Spamich', description='Spam and bread? Yes, bro.', user_id=1, instructions='Open a can of spam. Slice spam in quarter inch patties. Put it on some bread. Profit.')
     vienna_bread = Recipe(
-        name='Bread Sog Sig', description='A taste of Italy in a can, baby.', user_id=2)
+        name='Bread Sog Sig', description='A taste of Italy in a can, baby.', user_id=2, instructions='Buy some vienna sausages from the dollar store. Put it between some bread.')
     water_bread = Recipe(
-        name='Wet Toast', description='Some bread. Some wah wah.', user_id=3)
+        name='Wet Toast', description='Some bread. Some wah wah.', user_id=3, instructions='Take whatever bread you have. Dip it in water. Eat.')
 
     breakfast_cat = Category(name='Breakfast')
     lunch_cat = Category(name='Lunch')
