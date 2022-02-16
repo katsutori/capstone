@@ -1,7 +1,9 @@
 .single-recipe-container {
     width: 1000px;
     margin-top: 25px !important;
-    margin: auto;
+    margin-bottom: 100px !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .single-title {
@@ -50,8 +52,8 @@
 .cat-reviews {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 5px;
-    padding-bottom: 5px;
+    margin-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
@@ -82,4 +84,41 @@
 .single-link {
     text-decoration: none;
     color: black;
+}
+
+
+.butt-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+
+.cooking-instructions {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding-bottom: 5px;
+    margin-bottom: 21px;
+}
+
+
+.id-review {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.single-butts {
+    padding: 3px 10px;
+    margin: 0px 5px;
+    background-color: #a66252;
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+
+.one-review {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 20px;
 }
