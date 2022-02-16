@@ -44,7 +44,7 @@ const FeaturedRecipe = () => {
                         <p className='right-bottom-ele'><strong>By:</strong> {target.user.username}</p>
                         <p className='right-bottom-ele'>{target.reviews.length} reviews</p>
                         <p className='right-bottom-ele'><span className="stars" style={{"--rating": `${rating}`}}></span></p>
-                        <Link className='featured-button' to='/'>Start Cookin'</Link>
+                        <Link className='featured-button' to={`/recipes/${target.id}`}>Start Cookin'</Link>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ const FeaturedRecipe = () => {
                     <p className='right-bottom-ele'><span className='submit-by'>Submitted by:</span> {target.user.username}</p>
                     <p className='right-bottom-ele'>{target.reviews.length} reviews</p>
                     <p className='right-bottom-ele'><span className="stars" style={{"--rating": `${rating}`}}></span></p>
-                    <Link className='featured-button' to='/'>Start Cookin'</Link>
+                    <Link className='featured-button' to={`/recipes/${target.id}`}>Start Cookin'</Link>
                     </div>
                 </div>
             </div>

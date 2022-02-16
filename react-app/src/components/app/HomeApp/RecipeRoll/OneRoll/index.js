@@ -23,7 +23,7 @@ const OneRoll = ({recipe}) => {
             </div>
             <div className='one-roll-bottom'>
                 <span className="stars2" style={{"--rating": `${rating}`}}></span>
-                <div><Link className='get-recipe-button' to='/'>Get Recipe</Link></div>
+                <div><Link className='get-recipe-button' to={`/recipes/${recipe.id}`}>Get Recipe</Link></div>
             </div>
         </div>
     )

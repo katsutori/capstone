@@ -17,10 +17,12 @@ import SplashPage from './components/Splash/SplashPage';
 // Import auth components
 import HomeApp from './components/app/HomeApp';
 import AppNavigation from './components/app/AppNavigation';
+import SingleRecipe from './components/app/HomeApp/SingleRecipe';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector(state => state.session.user)
+  const recipes = useSelector(state => state.recipeState.entries)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,7 +51,7 @@ function App() {
               <SplashPage view='signup'/>
             </Route>
             <Route>
-              <Redirect to='/' />
+              <h1>Is not loading... Nada</h1>
             </Route>
           </Switch>
         <Footer />
@@ -69,6 +71,9 @@ function App() {
         </Route>
         <Route path='/signup' exact={true}>
           <SplashPage view='signup'/>
+        </Route>
+        <Route path='/recipes/:id' exact={true}>
+          <SingleRecipe />
         </Route>
         <Route>
           <h1>There's no food here.</h1>
