@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
+import { newRecipes } from '../../../../store/recipe';
 
 import './AddRecipeForm.css'
 
@@ -8,6 +9,7 @@ import './AddRecipeForm.css'
 const NewRecipeForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const user = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -25,6 +27,13 @@ const NewRecipeForm = () => {
 
     const handlePost = async (e) => {
         e.preventDefault()
+        let user_id = user.id
+        console.log('you user id',user_id)
+        const newRecipe = await dispatch(newRecipes(name, description, instructions, category, ingredient_one, user_id))
+
+        if(newRecipe.errors) {
+            setErrors(newRecipe.errors)
+        }
     }
 
     return (
@@ -124,6 +133,9 @@ const NewRecipeForm = () => {
                             onChange={ e => setFive(e.target.value)}
                         />
                     </label>
+                </div>
+                <div>
+                    <button type='submit'>Add Recipe</button>
                 </div>
             </form>
         </div>

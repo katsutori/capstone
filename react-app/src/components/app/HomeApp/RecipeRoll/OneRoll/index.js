@@ -3,11 +3,12 @@ import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import './OneRoll.css'
 
+import placeholder from '../../../../../img/placeholder.jpg'
 
 const OneRoll = ({recipe}) => {
 
     let rating = 0
-    const ratings = recipe.reviews.map(review => review.rating)
+    const ratings = recipe.reviews?.map(review => review.rating)
     if (ratings?.length) {
         ratings?.forEach( rate => rating = rate + rating)
         rating = rating / ratings.length
@@ -16,7 +17,7 @@ const OneRoll = ({recipe}) => {
 
     return (
         <div className='one-roll-container'>
-            <div className='one-roll-image' style={{backgroundImage: `url(${recipe.photos[0].url})`}}></div>
+            {recipe.photos.length ? <div className='one-roll-image' style={{backgroundImage: `url(${recipe.photos[0].url})`}}></div>:<div className='one-roll-image' style={{backgroundImage: `url(${placeholder})`}}></div>}
             <div className='one-roll-title'>
                 <h2>{recipe.name}</h2>
                 <p>By: {recipe.user.username}</p>
