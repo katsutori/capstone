@@ -100,6 +100,8 @@
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     padding-bottom: 5px;
     margin-bottom: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
 
 
@@ -124,6 +126,7 @@
     padding-bottom: 20px;
     margin-bottom: 25px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
 
 
@@ -135,4 +138,16 @@
 
 .review-by-span {
     font-weight: bold;
+}
+
+
+.single-ingredients {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+
+.single-script {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }

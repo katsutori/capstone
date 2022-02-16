@@ -50,7 +50,7 @@ const SingleRecipe = () => {
             <div className='single-photo'>
                 <div>
                     <h2 className='single-h2'>{target.user.username}'s thoughts:</h2>
-                    <p>{target.description}</p>
+                    <p className='single-script'>{target.description}</p>
                 </div>
                 <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>
             </div>
@@ -59,7 +59,7 @@ const SingleRecipe = () => {
                 <div className='single-stars'><span className="stars" style={{"--rating": `${rating}`}}></span></div>
             </div>
             <div className='butt-section'>
-                <div>
+                <div className='single-ingredients'>
                 <h2 className='single-h2'>Ingredients:</h2>
                     <ul>
                     {target.ingredients.map((ingredient, idx) => (
