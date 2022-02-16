@@ -16,6 +16,13 @@ const SingleRecipe = () => {
 
     const target = recipes.find(single => single.id === +id)
 
+    let rating = 0;
+    const ratings = target?.reviews?.map(review => review.rating)
+    if (ratings?.length) {
+        ratings?.forEach( rate => rating = rate + rating)
+        rating = rating / ratings.length
+    }
+
     useEffect(() => {
         (async() => {
             await dispatch(getAllRecipes())
@@ -42,8 +49,8 @@ const SingleRecipe = () => {
                 <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>
             </div>
             <div className='cat-reviews'>
-                <div>{target.categories[0].name}</div>
-                <div></div>
+                <div className='single-cat'><span className='single-span'>Category:</span> <Link className='single-link' to={`/categories/${target.categories[0].name}`}>{target.categories[0].name}</Link></div>
+                <div className='single-stars'><span className="stars" style={{"--rating": `${rating}`}}></span></div>
             </div>
         </div>
     )
