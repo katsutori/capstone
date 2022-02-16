@@ -34,6 +34,17 @@ const SingleRecipe = () => {
                 <div className='single-title'>{target.name}</div>
                 <div className='single-by'>By {target.user.username}</div>
             </div>
+            <div className='single-photo'>
+                <div>
+                    <h2 className='single-h2'>{target.user.username}'s thoughts:</h2>
+                    <p>{target.description}</p>
+                </div>
+                <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>
+            </div>
+            <div className='cat-reviews'>
+                <div>{target.categories[0].name}</div>
+                <div></div>
+            </div>
         </div>
     )
 }
