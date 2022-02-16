@@ -1,0 +1,23 @@
+.single-recipe-container {
+    width: 1000px;
+    margin-top: 25px !important;
+    margin: auto;
+}
+
+.single-title {
+    font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
+    font-size: 42px;
+}
+
+
+.single-by {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400 !important;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.single-meta {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding-bottom: 25px;
+}
