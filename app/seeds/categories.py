@@ -19,13 +19,10 @@ def seed_categories():
     drink = Category(
         name='Drinks')
 
-    db.session.add(breakfast)
-    db.session.add(lunch)
+
     db.session.add(soup)
     db.session.add(salad)
     db.session.add(dinner)
-    db.session.add(dessert)
-    db.session.add(snack)
     db.session.add(drink)
 
     db.session.commit()
