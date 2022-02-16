@@ -66,6 +66,7 @@ def get_reviews(reviews):
             "review": review.review,
             "time_created": review.time_created,
             "time_updates": review.time_updated,
+            "user_id": review.user_id,
             "user": user_data
         }
 

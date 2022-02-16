@@ -76,6 +76,7 @@ const SingleRecipe = () => {
                     <h2 className='single-h2'>Reviews:</h2>
                         {target.reviews.map((review, idx) => (
                             <div className='one-review'>
+                            <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user[0].username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
                                     {user.id === review.user_id ? <button className='single-butts'>Edit</button>:<></>}
