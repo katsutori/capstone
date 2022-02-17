@@ -62,8 +62,9 @@ const SingleRecipe = () => {
                 {target.photos.length ? <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>:<div className='single-photo-container' style={{backgroundImage: `url(${placeholder})`}}></div>}
             </div>
             <div className='cat-reviews'>
-                <div className='single-cat'><span className='single-span'>Category:</span> <Link className='single-link' to={`/categories/${target.categories[0].name}`}>{target.categories[0].name}</Link></div>
+                <div className='single-cat'><span className='single-span'>Category:</span> <Link className='single-link' to={`/categories/${target.categories[target.categories.length - 1].name}`}>{target.categories[target.categories.length - 1].name}</Link></div>
                 <div className='single-stars'>
+                    {user.id === target.user_id ? <Link className='delete-recipe-button' to={`/recipes/${id}/edit`}>Edit Recipe</Link>:<></>}
                     {user.id === target.user_id ? <button className='delete-recipe-button' onClick={handleDeleteRecipe}>Delete Recipe</button>:<></>}
                     <span className="stars" style={{"--rating": `${rating}`}}></span>
                     </div>
@@ -72,9 +73,11 @@ const SingleRecipe = () => {
                 <div className='single-ingredients'>
                 <h2 className='single-h2'>Ingredients:</h2>
                     <ul>
-                    {target.ingredients.map((ingredient, idx) => (
-                        <li key={idx}>{ingredient.name}</li>
-                    ))}
+                    {target.ingredients[0] ? <li className='ingredient-li'>{target.ingredients[0].name}</li>:<></>}
+                    {target.ingredients[1] && target.ingredients[1].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[1].name}</li>:<></>}
+                    {target.ingredients[2] && target.ingredients[2].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[2].name}</li>:<></>}
+                    {target.ingredients[3] && target.ingredients[3].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[3].name}</li>:<></>}
+                    {target.ingredients[4] && target.ingredients[4].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[4].name}</li>:<></>}
                     </ul>
                 </div>
                 <div>
