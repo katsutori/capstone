@@ -123,16 +123,17 @@ const EditRecipeForm = () => {
 
     return (
         <div className='new-recipe-form-container'>
-            <form onSubmit={handlePost}>
-                <h1>Edit your budget recipe!</h1>
+            <form className='recipe-form-container' onSubmit={handlePost}>
+                <h1 className='new-recipe-h1'>Edit your budget recipe!</h1>
                 <div >
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
                 <div>
-                    <label> Recipe Name
+                    <label className='new-recipe-label'> Recipe Name
                         <input
+                            className='new-recipe-input'
                             type='text'
                             value={name}
                             onChange={ e => setName(e.target.value)}
@@ -141,8 +142,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Description
+                    <label className='new-recipe-label'> Description
                         <textarea
+                            className='new-recipe-input'
                             type='text'
                             value={description}
                             onChange={ e => setDescription(e.target.value)}
@@ -151,8 +153,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Instructions
+                    <label className='new-recipe-label'> Instructions
                         <textarea
+                            className='new-recipe-input'
                             type='text'
                             value={instructions}
                             onChange={ e => setInstructions(e.target.value)}
@@ -161,8 +164,8 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Choose a Category
-                    <select value={category} onChange={ e => setCategory(e.target.value)}>
+                    <label className='new-recipe-label'> Choose a Category
+                    <select className='new-recipe-select' value={category} onChange={ e => setCategory(e.target.value)}>
                                 <option  value="Breakfast">Breakfast</option>
                                 <option value="Lunch">Lunch</option>
                                 <option value="Dinner">Dinner</option>
@@ -174,8 +177,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Ingredient
+                    <label className='new-recipe-label'> Ingredient
                         <input
+                            className='new-recipe-input'
                             type='text'
                             value={ingredient_one}
                             onChange={ e => setOne(e.target.value)}
@@ -184,8 +188,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 {ingredient_two !== 'undefined' ? <div>
-                    <label> Ingredient
+                    <label className='new-recipe-label'> Ingredient
                         <input
+                            className='new-recipe-input'
                             type='text'
                             value={ingredient_two}
                             onChange={ e => setTwo(e.target.value)}
@@ -193,8 +198,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 {ingredient_three !== 'undefined' ? <div>
-                    <label> Ingredient
+                    <label className='new-recipe-label'> Ingredient
                         <input
+                            className='new-recipe-input'
                             type='text'
                             value={ingredient_three}
                             onChange={ e => setThree(e.target.value)}
@@ -202,8 +208,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 {ingredient_four !== 'undefined' ? <div>
-                    <label> Ingredient
+                    <label className='new-recipe-label'> Ingredient
                         <input
+                            className='new-recipe-input'
                             type='text'
                             value={ingredient_four}
                             onChange={ e => setFour(e.target.value)}
@@ -211,8 +218,9 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 {ingredient_five !== 'undefined' ? <div>
-                    <label> Ingredient
+                    <label className='new-recipe-label'> Ingredient
                         <input
+                            className='new-recipe-input'
                             type='text'
                             value={ingredient_five}
                             onChange={ e => setFive(e.target.value)}
@@ -220,7 +228,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 <div>
-                    <button type='submit'>Edit Recipe</button>
+                    <button className='recipe-form-buttons' type='submit'>Edit Recipe</button>
                 </div>
             </form>
         </div>
