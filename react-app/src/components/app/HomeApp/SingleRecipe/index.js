@@ -5,6 +5,7 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 // Import states
 import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
 import { getAllReviews, removeOneReview } from '../../../../store/review'
+import { getAllIngredients } from '../../../../store/ingredient'
 import placeholder from '../../../../img/placeholder.jpg'
 import './SingleRecipe.css'
 
@@ -18,9 +19,12 @@ const SingleRecipe = () => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const recipes = useSelector(state => state.recipeState.entries)
+    const ingredient = useSelector(state => state.ingredientState.entries)
     const reviews = useSelector(state => state.reviewState.entries)
     const target = recipes.find(single => single.id === +id)
     const singleReview = reviews.filter(single => single.recipe_id === +id)
+    const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
+    console.log('here be yer spices', ingredientSet)
     const [editing, setEditing] = useState(false)
     console.log('your single review', singleReview)
 
@@ -45,6 +49,7 @@ const SingleRecipe = () => {
         (async() => {
             await dispatch(getAllRecipes())
             await dispatch(getAllReviews(id))
+            await dispatch(getAllIngredients())
         })();
     }, [dispatch, id])
 
