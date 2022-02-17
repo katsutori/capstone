@@ -142,7 +142,7 @@ const SingleRecipe = () => {
                                     {user.id === review.user_id ? <button onClick={handleDeleteReview(review.id)} className='single-butts'>Delete</button>:<></>}
                                     <span className="stars" style={{"--rating": `${review.rating}`}}></span>
                                 </div>
-                                <div>{editing === true ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
+                                <div>{editing === true && user.id === review.user_id ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
 
                             </div>
                         ))}
