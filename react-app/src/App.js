@@ -20,6 +20,7 @@ import AppNavigation from './components/app/AppNavigation';
 import SingleRecipe from './components/app/HomeApp/SingleRecipe';
 import NewRecipeForm from './components/app/HomeApp/AddRecipeForm';
 import EditRecipeForm from './components/app/HomeApp/EditRecipe';
+import UploadPicture from './components/app/HomeApp/PhotoUpload';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -84,6 +85,9 @@ function App() {
         <Route path='/recipes/:id/edit' exact={true}>
           <EditRecipeForm />
         </Route>
+        <Route path='/recipes/:id/photos/upload' exact={true}>
+              <UploadPicture />
+          </Route>
         <Route>
           <h1>There's no food here.</h1>
         </Route>
