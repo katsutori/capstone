@@ -163,6 +163,10 @@
       color:#a66252;
   }
 
+.cancel-review {
+  margin-left: 10px;
+}
+
   @media screen and (max-width: 800px) {
     .new-review-form-container {
       grid-template-columns: 4fr 0fr !important;
