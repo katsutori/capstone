@@ -116,6 +116,7 @@ const SingleRecipe = () => {
                         <div className='ingredients-container' key={idx}>
                             <div className='ing-name'>{one.name}</div>
                             <div className='ing-butt-cont'>
+                            {target.user_id === user.id ? <button className='ing-butt'>Edit</button>:<></>}
                             {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
                             </div>
                         </div>
