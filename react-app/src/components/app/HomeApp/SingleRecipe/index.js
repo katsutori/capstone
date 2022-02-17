@@ -64,7 +64,7 @@ const SingleRecipe = () => {
             <div className='cat-reviews'>
                 <div className='single-cat'><span className='single-span'>Category:</span> <Link className='single-link' to={`/categories/${target.categories[target.categories.length - 1].name}`}>{target.categories[target.categories.length - 1].name}</Link></div>
                 <div className='single-stars'>
-                    <Link className='delete-recipe-button' to={`/recipes/${id}/photos/upload`}>Upload Photo</Link>
+                    {user.id === target.user_id ? <Link className='delete-recipe-button' to={`/recipes/${id}/photos/upload`}>Upload Photo</Link>:<></>}
                     {user.id === target.user_id ? <Link className='delete-recipe-button' to={`/recipes/${id}/edit`}>Edit Recipe</Link>:<></>}
                     {user.id === target.user_id ? <button className='delete-recipe-button' onClick={handleDeleteRecipe}>Delete Recipe</button>:<></>}
                     <span className="stars" style={{"--rating": `${rating}`}}></span>
