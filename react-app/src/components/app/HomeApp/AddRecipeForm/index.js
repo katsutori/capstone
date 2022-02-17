@@ -35,6 +35,8 @@ const NewRecipeForm = () => {
             setErrors(newRecipe.errors)
         }
 
+        else if (!newRecipe.errors) {
+
         if (ingredient_one){
             await fetch('/api/recipes/new/ingredient', {
                 method: "POST",
@@ -101,6 +103,7 @@ const NewRecipeForm = () => {
         }
         await dispatch(getAllRecipes())
         history.push(`/recipes/${newRecipe.id}`)
+    }
     }
 
     return (

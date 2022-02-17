@@ -4,8 +4,12 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 
 // Import states
 import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
+import { getAllReviews, removeOneReview } from '../../../../store/review'
 import placeholder from '../../../../img/placeholder.jpg'
 import './SingleRecipe.css'
+
+// Import Components
+import AddReviewForm from '../AddReviewForm'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
@@ -13,11 +17,13 @@ const SingleRecipe = () => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const recipes = useSelector(state => state.recipeState.entries)
-
+    const reviews = useSelector(state => state.reviewState.entries)
     const target = recipes.find(single => single.id === +id)
+    const singleReview = reviews.filter(single => single.recipe_id === +id)
+    console.log('your single review', singleReview)
 
     let rating = 0;
-    const ratings = target?.reviews?.map(review => review.rating)
+    const ratings = singleReview?.map(review => review.rating)
 
     if (ratings?.length) {
         ratings?.forEach( rate => rating = rate + rating)
@@ -32,6 +38,7 @@ const SingleRecipe = () => {
     useEffect(() => {
         (async() => {
             await dispatch(getAllRecipes())
+            await dispatch(getAllReviews(id))
         })();
     }, [dispatch, id])
 
@@ -40,6 +47,18 @@ const SingleRecipe = () => {
 
         await dispatch(removeRecipe(id))
         history.push('/')
+    }
+
+    const handleDeleteReview = (delete_id) => async (e) => {
+        e.preventDefault()
+        console.log('here is your review id', delete_id)
+        let reviewToDeleteId = delete_id
+        const payload = {
+            reviewToDeleteId,
+            recipeId: id
+        }
+
+        await dispatch(removeOneReview(payload))
     }
 
     if (!target) {
@@ -88,17 +107,18 @@ const SingleRecipe = () => {
                     </div>
                     <div className='reviews'>
                     <h2 className='single-h2'>Reviews:</h2>
-                        {target.reviews.map((review, idx) => (
+                        {singleReview?.map((review, idx) => (
                             <div key={idx} className='one-review'>
-                            <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user[0].username}</p>
+                            <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user?.username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
                                     {user.id === review.user_id ? <button className='single-butts'>Edit</button>:<></>}
-                                    {user.id === review.user_id ? <button className='single-butts'>Delete</button>:<></>}
+                                    {user.id === review.user_id ? <button onClick={handleDeleteReview(review.id)} className='single-butts'>Delete</button>:<></>}
                                     <span className="stars" style={{"--rating": `${review.rating}`}}></span>
                                 </div>
                             </div>
                         ))}
+                        <AddReviewForm />
                     </div>
                 </div>
             </div>
