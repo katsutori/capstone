@@ -168,3 +168,8 @@
 .delete-recipe-button:hover {
     background-color: #a66252;
 }
+
+.ingredient-li {
+    list-style: none;
+    margin-bottom: 3px;
+}

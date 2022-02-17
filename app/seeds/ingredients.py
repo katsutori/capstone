@@ -12,31 +12,31 @@ def seed_ingredients():
     db.session.add(ramen_lettuce)
 
     # Cereal
-    cereal_cereal = Ingredient(name='Honey Nut Cheerio', recipe_id=2)
-    cereal_milk = Ingredient(name='Milk', recipe_id=2)
-    cereal_banana = Ingredient(name="Banana", recipe_id=2)
+    cereal_cereal = Ingredient(name='Honey Nut Cheerio', recipe_id=3)
+    cereal_milk = Ingredient(name='Milk', recipe_id=3)
+    cereal_banana = Ingredient(name="Banana", recipe_id=3)
 
     db.session.add(cereal_cereal)
     db.session.add(cereal_milk)
     db.session.add(cereal_banana)
 
     # Grilled Cheese
-    ch_bread = Ingredient(name='Bread', recipe_id=3)
-    ch_cheese = Ingredient(name='Almost bad cheese', recipe_id=3)
+    ch_bread = Ingredient(name='Bread', recipe_id=4)
+    ch_cheese = Ingredient(name='Almost bad cheese', recipe_id=4)
 
     db.session.add(ch_bread)
     db.session.add(ch_cheese)
 
     # Spamich
-    spam_bread = Ingredient(name='Bread', recipe_id=4)
-    spam_spam = Ingredient(name='Spam', recipe_id=4)
+    spam_bread = Ingredient(name='Bread', recipe_id=5)
+    spam_spam = Ingredient(name='Spam', recipe_id=5)
 
     db.session.add(spam_bread)
     db.session.add(spam_spam)
 
     # Vienna Bread
-    ss_bread = Ingredient(name='Bread', recipe_id=5)
-    ss_ss = Ingredient(name='Vienna Sausage', recipe_id=5)
+    ss_bread = Ingredient(name='Bread', recipe_id=2)
+    ss_ss = Ingredient(name='Vienna Sausage', recipe_id=2)
 
     db.session.add(ss_bread)
     db.session.add(ss_ss)

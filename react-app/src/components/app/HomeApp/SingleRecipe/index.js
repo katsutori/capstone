@@ -73,9 +73,11 @@ const SingleRecipe = () => {
                 <div className='single-ingredients'>
                 <h2 className='single-h2'>Ingredients:</h2>
                     <ul>
-                    {target.ingredients.map((ingredient, idx) => (
-                        <li key={idx}>{ingredient.name}</li>
-                    ))}
+                    {target.ingredients[0] ? <li className='ingredient-li'>{target.ingredients[0].name}</li>:<></>}
+                    {target.ingredients[1] && target.ingredients[1].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[1].name}</li>:<></>}
+                    {target.ingredients[2] && target.ingredients[2].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[2].name}</li>:<></>}
+                    {target.ingredients[3] && target.ingredients[3].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[3].name}</li>:<></>}
+                    {target.ingredients[4] && target.ingredients[4].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[4].name}</li>:<></>}
                     </ul>
                 </div>
                 <div>

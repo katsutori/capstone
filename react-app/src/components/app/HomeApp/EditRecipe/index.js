@@ -64,7 +64,7 @@ const EditRecipeForm = () => {
             })
 
 
-
+        if (ingredient_two !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[1]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -74,9 +74,9 @@ const EditRecipeForm = () => {
                     name: ingredient_two,
                 })
             })
+        }
 
-
-
+        if (ingredient_three !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[2]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -86,9 +86,9 @@ const EditRecipeForm = () => {
                     name: ingredient_three,
                 })
             })
+        }
 
-
-
+        if (ingredient_four !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[3]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -98,9 +98,9 @@ const EditRecipeForm = () => {
                     name: ingredient_four,
                 })
             })
+        }
 
-
-
+        if (ingredient_five !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[4]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -110,7 +110,7 @@ const EditRecipeForm = () => {
                     name: ingredient_five,
                 })
             })
-
+        }
 
         await dispatch(getAllRecipes())
         history.push(`/recipes/${id}`)

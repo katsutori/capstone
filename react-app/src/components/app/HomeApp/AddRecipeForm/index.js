@@ -15,11 +15,11 @@ const NewRecipeForm = () => {
     const [description, setDescription] = useState("")
     const [instructions, setInstructions] = useState("")
     const [category, setCategory] = useState("Breakfast")
-    const [ingredient_one, setOne] = useState("")
-    const [ingredient_two, setTwo] = useState("")
-    const [ingredient_three, setThree] = useState("")
-    const [ingredient_four, setFour] = useState("")
-    const [ingredient_five, setFive] = useState("")
+    const [ingredient_one, setOne] = useState(" ")
+    const [ingredient_two, setTwo] = useState(" ")
+    const [ingredient_three, setThree] = useState(" ")
+    const [ingredient_four, setFour] = useState(" ")
+    const [ingredient_five, setFive] = useState(" ")
 
     useEffect(() => {
         window.scrollTo(0, 0)
