@@ -156,17 +156,16 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> First Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_one}
                             onChange={ e => setOne(e.target.value)}
-                            required
                         />
                     </label>
                 </div>
                 <div>
-                    <label> Second Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_two}
@@ -175,7 +174,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Third Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_three}
@@ -184,7 +183,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Fourth Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_four}
@@ -193,7 +192,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> Fifth Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_five}

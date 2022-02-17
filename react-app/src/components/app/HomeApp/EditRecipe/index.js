@@ -44,7 +44,6 @@ const EditRecipeForm = () => {
     const handlePost = async (e) => {
         e.preventDefault()
         let user_id = user.id
-        console.log('hellllllllllllo', category)
         const newRecipe = await dispatch(editingRecipe(name, description, instructions, category, ingredient_one, user_id, id))
 
         if(newRecipe.errors) {
@@ -175,17 +174,17 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label> First Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_one}
                             onChange={ e => setOne(e.target.value)}
-                            required
+
                         />
                     </label>
                 </div>
                 {ingredient_two !== 'undefined' ? <div>
-                    <label> Second Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_two}
@@ -194,7 +193,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 {ingredient_three !== 'undefined' ? <div>
-                    <label> Third Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_three}
@@ -203,7 +202,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 {ingredient_four !== 'undefined' ? <div>
-                    <label> Fourth Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_four}
@@ -212,7 +211,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>:<></>}
                 {ingredient_five !== 'undefined' ? <div>
-                    <label> Fifth Ingredient
+                    <label> Ingredient
                         <input
                             type='text'
                             value={ingredient_five}
