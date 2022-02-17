@@ -22,7 +22,6 @@ def seed_categories():
 
     db.session.add(soup)
     db.session.add(salad)
-    db.session.add(dinner)
     db.session.add(drink)
 
     db.session.commit()

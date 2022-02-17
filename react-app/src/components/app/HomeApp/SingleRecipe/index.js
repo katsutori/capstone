@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory, Link } from 'react-router-dom'
 
 // Import states
-import { getAllRecipes } from '../../../../store/recipe'
-
+import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
+import placeholder from '../../../../img/placeholder.jpg'
 import './SingleRecipe.css'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
-    const History = useHistory()
+    const history = useHistory()
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const recipes = useSelector(state => state.recipeState.entries)
@@ -35,6 +35,13 @@ const SingleRecipe = () => {
         })();
     }, [dispatch, id])
 
+    const handleDeleteRecipe = async (e) => {
+        e.preventDefault()
+
+        await dispatch(removeRecipe(id))
+        history.push('/')
+    }
+
     if (!target) {
         return (
             <h1>Is loading...</h1>
@@ -52,11 +59,14 @@ const SingleRecipe = () => {
                     <h2 className='single-h2'>{target.user.username}'s thoughts:</h2>
                     <p className='single-script'>{target.description}</p>
                 </div>
-                <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>
+                {target.photos.length ? <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>:<div className='single-photo-container' style={{backgroundImage: `url(${placeholder})`}}></div>}
             </div>
             <div className='cat-reviews'>
                 <div className='single-cat'><span className='single-span'>Category:</span> <Link className='single-link' to={`/categories/${target.categories[0].name}`}>{target.categories[0].name}</Link></div>
-                <div className='single-stars'><span className="stars" style={{"--rating": `${rating}`}}></span></div>
+                <div className='single-stars'>
+                    {user.id === target.user_id ? <button className='delete-recipe-button' onClick={handleDeleteRecipe}>Delete Recipe</button>:<></>}
+                    <span className="stars" style={{"--rating": `${rating}`}}></span>
+                    </div>
             </div>
             <div className='butt-section'>
                 <div className='single-ingredients'>
@@ -75,7 +85,7 @@ const SingleRecipe = () => {
                     <div className='reviews'>
                     <h2 className='single-h2'>Reviews:</h2>
                         {target.reviews.map((review, idx) => (
-                            <div className='one-review'>
+                            <div key={idx} className='one-review'>
                             <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user[0].username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
