@@ -51,7 +51,7 @@ const EditRecipeForm = () => {
             setErrors(newRecipe.errors)
         }
 
-
+        if (ingredient_one !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[0]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -62,7 +62,7 @@ const EditRecipeForm = () => {
                     recipe_id: id
                 })
             })
-
+        }
 
         if (ingredient_two !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[1]?.id}`, {
