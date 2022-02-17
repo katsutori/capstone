@@ -119,6 +119,7 @@
     border: none;
     color: white;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .one-review {

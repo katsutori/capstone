@@ -28,7 +28,7 @@ def get_reviews(recipe_id):
 
 @review_routes.route('/', methods=['POST'])
 @login_required
-def post_review(business_id):
+def post_review(recipe_id):
     data = request.json
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -51,7 +51,7 @@ def post_review(business_id):
 
 @review_routes.route('/<int:review_id>/', methods=["PATCH"])
 @login_required
-def edit_review(business_id, review_id):
+def edit_review(recipe_id, review_id):
 
     data = request.json
     form = ReviewForm()
@@ -73,7 +73,7 @@ def edit_review(business_id, review_id):
 
 @review_routes.route('/<int:review_id>/', methods=["DELETE"])
 @login_required
-def delete_review(business_id, review_id):
+def delete_review(recipe_id, review_id):
     Review.query.filter(Review.id == review_id).delete()
 
     db.session.commit()
