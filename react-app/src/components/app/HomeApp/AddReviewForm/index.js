@@ -115,7 +115,7 @@ const AddReviewForm = () => {
                 </div>
                 <div className='buttons-container'>
                     {toggle === false ? <button className='add-review-button' type='submit'>Add Review</button>:<></>}
-
+                    {toggle === false ? <button className='add-review-button cancel-review' onClick={() => setToggle(!toggle)} type='button'>Cancel</button>:<></>}
                 </div>
             </form>
         </div>
