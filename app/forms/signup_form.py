@@ -30,7 +30,7 @@ def is_proper_email(form, field):
         if letter == "@":
             break
         elif letter == '.':
-            raise ValidationError("You need to enter a proper email address.")
+            raise ValidationError("You need to enter a properly formatted email address.")
 
 
 class SignUpForm(FlaskForm):
