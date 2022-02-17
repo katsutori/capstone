@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory, Link } from 'react-router-dom'
 
@@ -10,6 +10,7 @@ import './SingleRecipe.css'
 
 // Import Components
 import AddReviewForm from '../AddReviewForm'
+import EditReviewForm from '../EditReviewForm'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
@@ -20,6 +21,7 @@ const SingleRecipe = () => {
     const reviews = useSelector(state => state.reviewState.entries)
     const target = recipes.find(single => single.id === +id)
     const singleReview = reviews.filter(single => single.recipe_id === +id)
+    const [editing, setEditing] = useState(false)
     console.log('your single review', singleReview)
 
     let rating = 0;
@@ -33,6 +35,10 @@ const SingleRecipe = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
+
+    useEffect(() => {
+        setEditing(false)
+    }, [reviews])
 
 
     useEffect(() => {
@@ -112,10 +118,12 @@ const SingleRecipe = () => {
                             <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user?.username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
-                                    {user.id === review.user_id ? <button className='single-butts'>Edit</button>:<></>}
+                                    {user.id === review.user_id ? <button onClick={() => setEditing(!editing)} className='single-butts'>Edit</button>:<></>}
                                     {user.id === review.user_id ? <button onClick={handleDeleteReview(review.id)} className='single-butts'>Delete</button>:<></>}
                                     <span className="stars" style={{"--rating": `${review.rating}`}}></span>
                                 </div>
+                                <div>{editing === true ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
+
                             </div>
                         ))}
                         <AddReviewForm />
