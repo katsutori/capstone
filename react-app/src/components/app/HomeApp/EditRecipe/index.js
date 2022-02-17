@@ -51,7 +51,7 @@ const EditRecipeForm = () => {
             setErrors(newRecipe.errors)
         }
 
-        if (ingredient_one){
+
             await fetch(`/api/recipes/ingredient/${target.ingredients[0]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -62,9 +62,9 @@ const EditRecipeForm = () => {
                     recipe_id: id
                 })
             })
-        }
 
-        if (ingredient_two){
+
+
             await fetch(`/api/recipes/ingredient/${target.ingredients[1]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -74,9 +74,9 @@ const EditRecipeForm = () => {
                     name: ingredient_two,
                 })
             })
-        }
 
-        if (ingredient_three){
+
+
             await fetch(`/api/recipes/ingredient/${target.ingredients[2]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -86,9 +86,9 @@ const EditRecipeForm = () => {
                     name: ingredient_three,
                 })
             })
-        }
 
-        if (ingredient_four){
+
+
             await fetch(`/api/recipes/ingredient/${target.ingredients[3]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -98,9 +98,9 @@ const EditRecipeForm = () => {
                     name: ingredient_four,
                 })
             })
-        }
 
-        if (ingredient_five){
+
+
             await fetch(`/api/recipes/ingredient/${target.ingredients[4]?.id}`, {
                 method: "PATCH",
                 headers: {
@@ -110,7 +110,7 @@ const EditRecipeForm = () => {
                     name: ingredient_five,
                 })
             })
-        }
+
 
         await dispatch(getAllRecipes())
         history.push(`/recipes/${id}`)
@@ -184,7 +184,7 @@ const EditRecipeForm = () => {
                         />
                     </label>
                 </div>
-                <div>
+                {ingredient_two !== 'undefined' ? <div>
                     <label> Second Ingredient
                         <input
                             type='text'
@@ -192,8 +192,8 @@ const EditRecipeForm = () => {
                             onChange={ e => setTwo(e.target.value)}
                         />
                     </label>
-                </div>
-                <div>
+                </div>:<></>}
+                {ingredient_three !== 'undefined' ? <div>
                     <label> Third Ingredient
                         <input
                             type='text'
@@ -201,8 +201,8 @@ const EditRecipeForm = () => {
                             onChange={ e => setThree(e.target.value)}
                         />
                     </label>
-                </div>
-                <div>
+                </div>:<></>}
+                {ingredient_four !== 'undefined' ? <div>
                     <label> Fourth Ingredient
                         <input
                             type='text'
@@ -210,8 +210,8 @@ const EditRecipeForm = () => {
                             onChange={ e => setFour(e.target.value)}
                         />
                     </label>
-                </div>
-                <div>
+                </div>:<></>}
+                {ingredient_five !== 'undefined' ? <div>
                     <label> Fifth Ingredient
                         <input
                             type='text'
@@ -219,7 +219,7 @@ const EditRecipeForm = () => {
                             onChange={ e => setFive(e.target.value)}
                         />
                     </label>
-                </div>
+                </div>:<></>}
                 <div>
                     <button type='submit'>Edit Recipe</button>
                 </div>
