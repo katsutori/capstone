@@ -17,11 +17,11 @@ const EditRecipeForm = () => {
         localStorage.setItem('description', target.description)
         localStorage.setItem('instructions', target.instructions)
         localStorage.setItem('category', target.categories[0]?.name)
-        localStorage.setItem('one', target.ingredients[4]?.name)
-        localStorage.setItem('two', target.ingredients[3]?.name)
+        localStorage.setItem('one', target.ingredients[0]?.name)
+        localStorage.setItem('two', target.ingredients[1]?.name)
         localStorage.setItem('three', target.ingredients[2]?.name)
-        localStorage.setItem('four', target.ingredients[1]?.name)
-        localStorage.setItem('five', target.ingredients[0]?.name)
+        localStorage.setItem('four', target.ingredients[3]?.name)
+        localStorage.setItem('five', target.ingredients[4]?.name)
     }
 
 
