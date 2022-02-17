@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
 from app.models import Recipe, Category, Photo, db, Review, Ingredient, User
-from app.forms import NewRecipeForm
+from app.forms import NewIngredientForm
 from sqlalchemy.orm import joinedload
 
 ingredient_routes = Blueprint('ingredients', __name__)
@@ -23,3 +23,26 @@ def all_ingredients():
     ingredients = Ingredient.query.all()
 
     return {"data": [ingredient.to_dict() for ingredient in ingredients]}
+
+@ingredient_routes.route('', methods=['POST'])
+@login_required
+def add_ingredient():
+    data = request.json
+    form = NewIngredientForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        ingredient = Ingredient(**data)
+        db.session.add(ingredient)
+        db.session.commit()
+        return ingredient.to_dict()
+
+    return  {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@ingredient_routes.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def delete_recipe(id):
+    remove = Ingredient.query.get(id)
+    db.session.delete(remove)
+    db.session.commit()
+    return remove.to_dict()

@@ -1,4 +1,13 @@
 const LOAD_INGREDIENTS = 'ingredients/LOAD'
+const REMOVE_INGREDIENTS = 'ingredients/REMOVE'
+const ADD_INGREDIENTS = 'ingredients/ADD'
+
+export const addIngredients = payload => {
+    return {
+        type: ADD_INGREDIENTS,
+        payload
+    }
+}
 
 export const loadIngredients = payload => {
     return {
@@ -7,6 +16,23 @@ export const loadIngredients = payload => {
     }
 }
 
+export const removeIngredient = payload => {
+    return {
+        type: REMOVE_INGREDIENTS,
+        payload
+    }
+}
+
+export const deleteIngredient = ingredient => async dispatch => {
+    const response = await fetch(`/api/ingredients/delete/${ingredient}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        const deleted = await response.json()
+        dispatch(removeIngredient(deleted))
+    }
+}
 
 export const getAllIngredients = recipeId => async dispatch => {
     const response = await fetch (`/api/ingredients`)
@@ -26,6 +52,10 @@ const ingredientReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_INGREDIENTS:
             return { ...state, entries: [...action.payload.data]}
+        case REMOVE_INGREDIENTS:
+            newState = {...state}
+            delete newState[action.payload]
+            return newState
         default:
             return state
     }
