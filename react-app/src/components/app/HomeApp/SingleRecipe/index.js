@@ -13,6 +13,7 @@ import './SingleRecipe.css'
 // Import Components
 import AddReviewForm from '../AddReviewForm'
 import EditReviewForm from '../EditReviewForm'
+import AddIngredientForm from '../AddIngredientForm'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
@@ -114,12 +115,14 @@ const SingleRecipe = () => {
                     {ingredientSet?.map((one, idx) => (
                         <div className='ingredients-container' key={idx}>
                             <div className='ing-name'>{one.name}</div>
-                            <div>
-                            {target.user_id === user.id ? <button className='ing-butt'>Edit</button>:<></>}
+                            <div className='ing-butt-cont'>
                             {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
                             </div>
                         </div>
                     ))}
+                    <div className='ingredients-container-add'>
+                        {target.user_id === user.id ? <AddIngredientForm />:<></>}
+                    </div>
                     </div>
                 </div>
                 <div>

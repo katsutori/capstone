@@ -23,6 +23,30 @@ export const removeIngredient = payload => {
     }
 }
 
+export const addNewIngredient = payload => async dispatch => {
+    console.log('here is you trying to add ingredient', payload.name, payload.id)
+    const response = await fetch(`/api/ingredients`, {
+        method: 'POST',
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const newIng = await response.json()
+        dispatch(addIngredients(newIng))
+        return newIng
+    } else {
+        const data = await response.json()
+        if (data.errors) {
+            return { 'errors': data.errors };
+        } else {
+            return { 'errors': 'Something went wrong. Please try again.'}
+        }
+    }
+}
+
 export const deleteIngredient = ingredient => async dispatch => {
     const response = await fetch(`/api/ingredients/delete/${ingredient}`, {
         method: 'DELETE'
