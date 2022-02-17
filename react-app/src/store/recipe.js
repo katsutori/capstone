@@ -1,5 +1,6 @@
 const LOAD_RECIPES = 'recipes/LOAD'
 const ADD_RECIPE = 'recipes/ADD'
+const DELETE_RECIPE = 'recipes/DELETE'
 
 export const loadRecipes = payload => {
     return {
@@ -12,6 +13,24 @@ export const addRecipe = payload => {
     return {
         type: ADD_RECIPE,
         payload
+    }
+}
+
+export const deleteRecipe = deletedRecipe => {
+    return {
+        type: DELETE_RECIPE,
+        deletedRecipe
+    }
+}
+
+export const removeRecipe = recipe => async dispatch => {
+    const response = await fetch(`/api/recipes/delete/${recipe}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        const deleted = await response.json()
+        dispatch(deleteRecipe(deleted))
     }
 }
 
@@ -70,6 +89,15 @@ const recipeReducer = ( state = initialState, action) => {
             return {...state, entries: [...action.payload['data']]}
         case ADD_RECIPE:
             return {...state, entries: [...state.entries, action.payload]}
+        case DELETE_RECIPE:
+            newState = { ...state }
+
+            let target = action.deletedRecipe.id
+            let removing = newState.entries.find(one => one.id === target)
+            let idx = newState.entries.indexOf(removing)
+
+            newState.entries.splice(idx, 1)
+            return newState
         default:
             return state
     }

@@ -90,14 +90,12 @@ def get_user(user):
 @recipe_routes.route('/new', methods=['POST'])
 @login_required
 def create_recipe():
-    print('IIIIIIIIIIIIIII here')
     data = request.json
     form = NewRecipeForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
 
-        print('you made it!!!!!!!!!!!!!')
         cat = Category.query.filter(Category.name == data['category']).one()
         data.pop('category')
         data.pop('ingredient_one')
@@ -112,9 +110,16 @@ def create_recipe():
 @recipe_routes.route('/new/ingredient', methods=['POST'])
 @login_required
 def create_ingredient():
-    print('weeeeeeeeeeeeeeee made it')
     data = request.json
     ingredient = Ingredient(**data)
     db.session.add(ingredient)
     db.session.commit()
     return ingredient.to_dict()
+
+@recipe_routes.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def delete_recipe(id):
+    remove = Recipe.query.get(id)
+    db.session.delete(remove)
+    db.session.commit()
+    return remove.to_dict()
