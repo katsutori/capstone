@@ -179,57 +179,8 @@ const EditRecipeForm = () => {
                             </select>
                     </label>
                 </div>
-                <div>
-                    <label className='new-recipe-label'> Ingredient
-                        <input
-                            className='new-recipe-input'
-                            type='text'
-                            value={ingredient_one}
-                            onChange={ e => setOne(e.target.value)}
 
-                        />
-                    </label>
-                </div>
-                {ingredient_two !== 'undefined' ? <div>
-                    <label className='new-recipe-label'> Ingredient
-                        <input
-                            className='new-recipe-input'
-                            type='text'
-                            value={ingredient_two}
-                            onChange={ e => setTwo(e.target.value)}
-                        />
-                    </label>
-                </div>:<></>}
-                {ingredient_three !== 'undefined' ? <div>
-                    <label className='new-recipe-label'> Ingredient
-                        <input
-                            className='new-recipe-input'
-                            type='text'
-                            value={ingredient_three}
-                            onChange={ e => setThree(e.target.value)}
-                        />
-                    </label>
-                </div>:<></>}
-                {ingredient_four !== 'undefined' ? <div>
-                    <label className='new-recipe-label'> Ingredient
-                        <input
-                            className='new-recipe-input'
-                            type='text'
-                            value={ingredient_four}
-                            onChange={ e => setFour(e.target.value)}
-                        />
-                    </label>
-                </div>:<></>}
-                {ingredient_five !== 'undefined' ? <div>
-                    <label className='new-recipe-label'> Ingredient
-                        <input
-                            className='new-recipe-input'
-                            type='text'
-                            value={ingredient_five}
-                            onChange={ e => setFive(e.target.value)}
-                        />
-                    </label>
-                </div>:<></>}
+
                 <div>
                     <button className='recipe-form-buttons' type='submit'>Edit Recipe</button>
                 </div>

@@ -5,12 +5,15 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 // Import states
 import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
 import { getAllReviews, removeOneReview } from '../../../../store/review'
+import { getAllIngredients } from '../../../../store/ingredient'
+import { deleteIngredient } from '../../../../store/ingredient'
 import placeholder from '../../../../img/placeholder.jpg'
 import './SingleRecipe.css'
 
 // Import Components
 import AddReviewForm from '../AddReviewForm'
 import EditReviewForm from '../EditReviewForm'
+import AddIngredientForm from '../AddIngredientForm'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
@@ -18,11 +21,15 @@ const SingleRecipe = () => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const recipes = useSelector(state => state.recipeState.entries)
+    const ingredient = useSelector(state => state.ingredientState.entries)
     const reviews = useSelector(state => state.reviewState.entries)
     const target = recipes.find(single => single.id === +id)
     const singleReview = reviews.filter(single => single.recipe_id === +id)
+    const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
+    console.log('here be yer spices', ingredientSet)
     const [editing, setEditing] = useState(false)
     console.log('your single review', singleReview)
+
 
     let rating = 0;
     const ratings = singleReview?.map(review => review.rating)
@@ -45,14 +52,20 @@ const SingleRecipe = () => {
         (async() => {
             await dispatch(getAllRecipes())
             await dispatch(getAllReviews(id))
+            await dispatch(getAllIngredients())
         })();
     }, [dispatch, id])
 
     const handleDeleteRecipe = async (e) => {
         e.preventDefault()
-
         await dispatch(removeRecipe(id))
         history.push('/')
+    }
+
+    const handleDeleteIngredient = (id) => async (e) => {
+        e.preventDefault()
+        await dispatch(deleteIngredient(id))
+        await dispatch(getAllIngredients())
     }
 
     const handleDeleteReview = (delete_id) => async (e) => {
@@ -98,13 +111,19 @@ const SingleRecipe = () => {
             <div className='butt-section'>
                 <div className='single-ingredients'>
                 <h2 className='single-h2'>Ingredients:</h2>
-                    <ul>
-                    {target.ingredients[0] ? <li className='ingredient-li'>{target.ingredients[0].name}</li>:<></>}
-                    {target.ingredients[1] && target.ingredients[1].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[1].name}</li>:<></>}
-                    {target.ingredients[2] && target.ingredients[2].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[2].name}</li>:<></>}
-                    {target.ingredients[3] && target.ingredients[3].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[3].name}</li>:<></>}
-                    {target.ingredients[4] && target.ingredients[4].name.length > 0 ? <li className='ingredient-li'>{target.ingredients[4].name}</li>:<></>}
-                    </ul>
+                    <div>
+                    {ingredientSet?.map((one, idx) => (
+                        <div className='ingredients-container' key={idx}>
+                            <div className='ing-name'>{one.name}</div>
+                            <div className='ing-butt-cont'>
+                            {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
+                            </div>
+                        </div>
+                    ))}
+                    <div className='ingredients-container-add'>
+                        {target.user_id === user.id ? <AddIngredientForm />:<></>}
+                    </div>
+                    </div>
                 </div>
                 <div>
                     <div className='cooking-instructions'>
