@@ -108,3 +108,13 @@ def create_recipe():
         return recipe.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@recipe_routes.route('/new/ingredient', methods=['POST'])
+@login_required
+def create_ingredient():
+    print('weeeeeeeeeeeeeeee made it')
+    data = request.json
+    ingredient = Ingredient(**data)
+    db.session.add(ingredient)
+    db.session.commit()
+    return ingredient.to_dict()

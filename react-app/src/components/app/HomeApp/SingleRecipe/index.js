@@ -4,7 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 
 // Import states
 import { getAllRecipes } from '../../../../store/recipe'
-
+import placeholder from '../../../../img/placeholder.jpg'
 import './SingleRecipe.css'
 
 const SingleRecipe = () => {
@@ -52,7 +52,7 @@ const SingleRecipe = () => {
                     <h2 className='single-h2'>{target.user.username}'s thoughts:</h2>
                     <p className='single-script'>{target.description}</p>
                 </div>
-                <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>
+                {target.photos.length ? <div className='single-photo-container' style={{backgroundImage: `url(${target.photos[0].url})`}}></div>:<div className='single-photo-container' style={{backgroundImage: `url(${placeholder})`}}></div>}
             </div>
             <div className='cat-reviews'>
                 <div className='single-cat'><span className='single-span'>Category:</span> <Link className='single-link' to={`/categories/${target.categories[0].name}`}>{target.categories[0].name}</Link></div>

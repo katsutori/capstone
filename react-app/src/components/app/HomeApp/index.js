@@ -11,7 +11,6 @@ import './HomeApp.css'
 const HomeApp = () => {
     const dispatch = useDispatch()
     const recipes = useSelector(state=> state.recipeState.entries)
-    console.log(Object.values(recipes).length)
 
     useEffect(() => {
         (async() => {

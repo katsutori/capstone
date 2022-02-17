@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { newRecipes } from '../../../../store/recipe';
-
+import { getAllRecipes } from '../../../../store/recipe';
 import './AddRecipeForm.css'
 
 
@@ -34,6 +34,73 @@ const NewRecipeForm = () => {
         if(newRecipe.errors) {
             setErrors(newRecipe.errors)
         }
+
+        if (ingredient_one){
+            await fetch('/api/recipes/new/ingredient', {
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    name: ingredient_one,
+                    recipe_id: newRecipe.id
+                })
+            })
+        }
+
+        if (ingredient_two){
+            await fetch('/api/recipes/new/ingredient', {
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    name: ingredient_two,
+                    recipe_id: newRecipe.id
+                })
+            })
+        }
+
+        if (ingredient_three){
+            await fetch('/api/recipes/new/ingredient', {
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    name: ingredient_three,
+                    recipe_id: newRecipe.id
+                })
+            })
+        }
+
+        if (ingredient_four){
+            await fetch('/api/recipes/new/ingredient', {
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    name: ingredient_four,
+                    recipe_id: newRecipe.id
+                })
+            })
+        }
+
+        if (ingredient_five){
+            await fetch('/api/recipes/new/ingredient', {
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    name: ingredient_five,
+                    recipe_id: newRecipe.id
+                })
+            })
+        }
+        await dispatch(getAllRecipes())
+        history.push(`/recipes/${newRecipe.id}`)
     }
 
     return (

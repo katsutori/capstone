@@ -28,7 +28,7 @@ const FeaturedRecipe = () => {
         )
     }
 
-    if (!target.photos) {
+    if (!target.photos.length) {
         return (
             <>
                 <div className='featured-container' style={{backgroundImage: `url(${fbg})`}}>
