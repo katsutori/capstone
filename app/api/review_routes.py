@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template
 from flask_login import current_user, login_required
 from app.models import db, Review
-from app.forms import ReviewForm, EditReviewForm
+from app.forms import ReviewForm
 from sqlalchemy import desc
 from sqlalchemy.orm import joinedload
 import json
@@ -20,8 +20,8 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @review_routes.route('/', methods=['GET'])
-def get_reviews(business_id):
-    reviews = Review.query.options(joinedload(Review.user)).filter(Review.business_id == business_id).order_by(desc(Review.time_created)).all()
+def get_reviews(recipe_id):
+    reviews = Review.query.options(joinedload(Review.user)).filter(Review.recipe_id == recipe_id).order_by(desc(Review.time_created)).all()
 
     return {'reviews': [{ **review.to_dict(), 'user': review.user.to_dict() } for review in reviews]}
 
@@ -54,7 +54,7 @@ def post_review(business_id):
 def edit_review(business_id, review_id):
 
     data = request.json
-    form = EditReviewForm()
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():

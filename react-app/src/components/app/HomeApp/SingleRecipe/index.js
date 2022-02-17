@@ -4,6 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 
 // Import states
 import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
+import { getAllReviews, removeOneReview } from '../../../../store/review'
 import placeholder from '../../../../img/placeholder.jpg'
 import './SingleRecipe.css'
 
@@ -13,8 +14,10 @@ const SingleRecipe = () => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const recipes = useSelector(state => state.recipeState.entries)
-
+    const reviews = useSelector(state => state.reviewState.entries)
     const target = recipes.find(single => single.id === +id)
+    const singleReview = reviews.filter(single => single.recipe_id === +id)
+    console.log('your single review', singleReview)
 
     let rating = 0;
     const ratings = target?.reviews?.map(review => review.rating)
@@ -32,6 +35,7 @@ const SingleRecipe = () => {
     useEffect(() => {
         (async() => {
             await dispatch(getAllRecipes())
+            await dispatch(getAllReviews(id))
         })();
     }, [dispatch, id])
 
@@ -88,9 +92,9 @@ const SingleRecipe = () => {
                     </div>
                     <div className='reviews'>
                     <h2 className='single-h2'>Reviews:</h2>
-                        {target.reviews.map((review, idx) => (
+                        {singleReview?.map((review, idx) => (
                             <div key={idx} className='one-review'>
-                            <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user[0].username}</p>
+                            <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user?.username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
                                     {user.id === review.user_id ? <button className='single-butts'>Edit</button>:<></>}

@@ -8,6 +8,7 @@ import SignUpForm from './components/auth/SignUpForm';
 // Import States
 import * as sessionActions from './store/session';
 import { getAllRecipes } from './store/recipe';
+import { getAllReviews } from './store/review';
 
 // Import non-auth components
 import SplashNavigation from './components/Splash/Navigation';
@@ -36,6 +37,7 @@ function App() {
     (async() => {
       await dispatch(sessionActions.authenticate()).then(() => setLoaded(true))
       await dispatch(getAllRecipes())
+      await dispatch(getAllReviews())
     })();
   }, [dispatch, loaded]);
 
