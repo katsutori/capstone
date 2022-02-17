@@ -50,6 +50,8 @@ const EditRecipeForm = () => {
             setErrors(newRecipe.errors)
         }
 
+        else if (!newRecipe.errors) {
+
         if (ingredient_one !== 'undefined') {
             await fetch(`/api/recipes/ingredient/${target.ingredients[0]?.id}`, {
                 method: "PATCH",
@@ -113,6 +115,7 @@ const EditRecipeForm = () => {
 
         await dispatch(getAllRecipes())
         history.push(`/recipes/${id}`)
+    }
     }
 
     if(!target) {

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, IntegerField
+from wtforms import StringField, SelectField, IntegerField, SubmitField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Recipe, Category
 
@@ -15,3 +15,4 @@ class NewRecipeForm(FlaskForm):
     ingredient_three = StringField('Third Ingredient')
     ingredient_four = StringField('Fourth Ingredient')
     ingredient_five = StringField('Fifth Ingredient')
+    submit = SubmitField('submit')
