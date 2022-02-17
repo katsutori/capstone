@@ -1,6 +1,7 @@
 const LOAD_RECIPES = 'recipes/LOAD'
 const ADD_RECIPE = 'recipes/ADD'
 const DELETE_RECIPE = 'recipes/DELETE'
+const EDIT_RECIPE = 'recipes/EDIT'
 
 export const loadRecipes = payload => {
     return {
@@ -20,6 +21,13 @@ export const deleteRecipe = deletedRecipe => {
     return {
         type: DELETE_RECIPE,
         deletedRecipe
+    }
+}
+
+export const editRecipe = editedRecipe => {
+    return {
+        type: EDIT_RECIPE,
+        editedRecipe
     }
 }
 
@@ -47,8 +55,39 @@ export const getAllRecipes = () => async dispatch => {
     }
 }
 
+export const editingRecipe = (name, description, instructions, category, ingredient_one, user_id, id) => async dispatch => {
+    const response = await fetch(`/api/recipes/edit/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name,
+            description,
+            instructions,
+            category,
+            ingredient_one,
+            user_id
+        })
+    })
+    if(response.ok) {
+        const revisedRecipe = await response.json()
+        dispatch(editRecipe(revisedRecipe))
+        return revisedRecipe
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return {'errors':data.errors};
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+      }
+
+    return response
+}
+
 export const newRecipes = (name, description, instructions, category, ingredient_one, user_id) => async dispatch => {
-    console.log(name, description, instructions, category)
+
     const response = await fetch(`/api/recipes/new`, {
         method: 'POST',
         headers: {

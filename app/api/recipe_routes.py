@@ -123,3 +123,42 @@ def delete_recipe(id):
     db.session.delete(remove)
     db.session.commit()
     return remove.to_dict()
+
+
+@recipe_routes.route('/edit/<int:id>', methods=['PATCH'])
+@login_required
+def patch_recipe(id):
+    data = request.json
+    form = NewRecipeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        cat = Category.query.filter(Category.name == data['category']).one()
+        data.pop('category')
+        data.pop('ingredient_one')
+        recipe = Recipe.query.options(joinedload(Recipe.categories)).get(id)
+        recipe.name = data['name']
+        recipe.description = data['description']
+        recipe.instructions = data['instructions']
+        recipe.categories.remove(recipe.categories[0])
+        recipe.categories.append(cat)
+        db.session.commit()
+        return recipe.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@recipe_routes.route('/ingredient/<int:id>', methods=['PATCH'])
+@login_required
+def edit_ingredient(id):
+    data = request.json
+    ingredient = Ingredient.query.get(id)
+    ingredient.name = data['name']
+    db.session.commit()
+    return ingredient.to_dict()
+
+@recipe_routes.route('/ingredient/<int:id>', methods=['DELETE'])
+@login_required
+def del_ingredient(id):
+    remove = Ingredient.query.get(id)
+    db.session.delete(remove)
+    db.session.commit()
+    return remove.to_dict()

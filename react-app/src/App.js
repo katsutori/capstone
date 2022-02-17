@@ -19,6 +19,7 @@ import HomeApp from './components/app/HomeApp';
 import AppNavigation from './components/app/AppNavigation';
 import SingleRecipe from './components/app/HomeApp/SingleRecipe';
 import NewRecipeForm from './components/app/HomeApp/AddRecipeForm';
+import EditRecipeForm from './components/app/HomeApp/EditRecipe';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -79,6 +80,9 @@ function App() {
         </Route>
         <Route path='/recipes/:id' exact={true}>
           <SingleRecipe />
+        </Route>
+        <Route path='/recipes/:id/edit' exact={true}>
+          <EditRecipeForm />
         </Route>
         <Route>
           <h1>There's no food here.</h1>
