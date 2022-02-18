@@ -1,5 +1,5 @@
 # Broke & Hangry
-This is a clone of [Cooking ny NY Times](https://cooking.nytimes.com/).
+This is a clone of [Cooking by NY Times](https://cooking.nytimes.com/).
 
 What rhymes with Yelp? Whelp! Whelp also happens to mean puppy, so take this puppy business review site for a walk in the park. Access the [Broke & Hangry MVP](https://brokehangry.herokuapp.com/).
 
