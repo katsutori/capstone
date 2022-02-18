@@ -39,6 +39,24 @@ def add_ingredient():
 
     return  {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@ingredient_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
+def edit_ingredient(ing_id):
+
+    data = request.json
+    form = NewIngredientForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        ingredient_to_update = Ingredient.query.filter(Ingredient.id == ing_id).one()
+
+        ingredient_to_update.name = data['name']
+        db.session.commit()
+
+        return data
+    return { "errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
 @ingredient_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete_recipe(id):

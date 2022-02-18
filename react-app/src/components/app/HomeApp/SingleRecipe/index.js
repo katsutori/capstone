@@ -28,6 +28,7 @@ const SingleRecipe = () => {
     const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
     console.log('here be yer spices', ingredientSet)
     const [editing, setEditing] = useState(-1)
+    const [ingredientEditing, setIngredientEditing] = useState(-1)
     console.log('your single review', singleReview)
 
 
