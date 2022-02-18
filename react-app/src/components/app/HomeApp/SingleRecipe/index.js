@@ -8,12 +8,15 @@ import { getAllReviews, removeOneReview } from '../../../../store/review'
 import { getAllIngredients } from '../../../../store/ingredient'
 import { deleteIngredient } from '../../../../store/ingredient'
 import placeholder from '../../../../img/placeholder.jpg'
+
+// Import CSS
 import './SingleRecipe.css'
 
 // Import Components
 import AddReviewForm from '../AddReviewForm'
 import EditReviewForm from '../EditReviewForm'
 import AddIngredientForm from '../AddIngredientForm'
+import EditIngredientForm from '../EditIngredientForm'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
@@ -26,7 +29,6 @@ const SingleRecipe = () => {
     const target = recipes.find(single => single.id === +id)
     const singleReview = reviews.filter(single => single.recipe_id === +id)
     const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
-    console.log('here be yer spices', ingredientSet)
     const [editing, setEditing] = useState(-1)
     const [ingredientEditing, setIngredientEditing] = useState(-1)
     console.log('your single review', singleReview)
@@ -120,6 +122,7 @@ const SingleRecipe = () => {
                             {target.user_id === user.id ? <button className='ing-butt'>Edit</button>:<></>}
                             {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
                             </div>
+                            <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>
                         </div>
                     ))}
                     <div className='ingredients-container-add'>

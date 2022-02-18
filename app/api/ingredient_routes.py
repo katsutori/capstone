@@ -39,7 +39,7 @@ def add_ingredient():
 
     return  {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@ingredient_routes.route('/<int:id>', methods=['PATCH'])
+@ingredient_routes.route('/<int:ing_id>', methods=['PATCH'])
 @login_required
 def edit_ingredient(ing_id):
 
