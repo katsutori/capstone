@@ -42,7 +42,7 @@ const FeaturedRecipe = () => {
                         </div>
                         <div className='right-bottom'>
                         <p className='right-bottom-ele'><strong>By:</strong> {target.user.username}</p>
-                        <p className='right-bottom-ele'>{target.reviews.length} reviews</p>
+                        {target.reviews.length === 1 ? <p className='right-bottom-ele'>{target.reviews.length} review</p>:<p className='right-bottom-ele'>{target.reviews.length} reviews</p>}
                         <p className='right-bottom-ele'><span className="stars" style={{"--rating": `${rating}`}}></span></p>
                         <Link className='featured-button' to={`/recipes/${target.id}`}>Start Cookin'</Link>
                         </div>
