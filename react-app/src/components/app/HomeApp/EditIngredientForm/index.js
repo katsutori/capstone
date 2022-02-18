@@ -4,6 +4,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { getAllIngredients, loadIngredients } from '../../../../store/ingredient';
 import { editOneIngredient } from '../../../../store/ingredient';
 
+import './EditIngredientForm.css'
+
 const EditIngredientForm = ({ingredientId, ingredientName}) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -36,7 +38,7 @@ const EditIngredientForm = ({ingredientId, ingredientName}) => {
 
 
     return (
-        <div className='new-ing-form-container'>
+        <div className='edit-ing-form-container'>
             <form className='new-ing-form' onSubmit={handleSubmit}>
                 {errors.length ?
                 <div className="error-container">
@@ -48,7 +50,7 @@ const EditIngredientForm = ({ingredientId, ingredientName}) => {
                 </div>
                 :<></>}
                 <div>
-                    <label className="new-review-label"> Edit an ingredient
+                    <label className="edit-review-label"> Edit an ingredient
                         <input
                             className='new-ing-input'
 
@@ -60,8 +62,8 @@ const EditIngredientForm = ({ingredientId, ingredientName}) => {
                         />
                     </label>
                 </div>
-                <div className='ing-buttons-container'>
-                    <button className='add-ing-button' type='submit'>Edit Ingredient</button>
+                <div className='edit-ing-buttons-container'>
+                    <button className='edit-ing-button' type='submit'>Edit Ingredient</button>
                 </div>
             </form>
         </div>
