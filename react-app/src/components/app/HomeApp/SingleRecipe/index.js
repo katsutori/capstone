@@ -50,6 +50,10 @@ const SingleRecipe = () => {
         setEditing(false)
     }, [reviews])
 
+    useEffect(() => {
+        setIngredientEditing(-1)
+    }, [ingredient])
+
 
     useEffect(() => {
         (async() => {
@@ -120,11 +124,11 @@ const SingleRecipe = () => {
                             <div className='ingredients-container' key={idx}>
                                 <div className='ing-name'>{one.name}</div>
                                 <div className='ing-butt-cont'>
-                                {target.user_id === user.id ? <button className='ing-butt'>Edit</button>:<></>}
+                                {target.user_id === user.id ? <button onClick={() => setIngredientEditing(idx)} className='ing-butt'>Edit</button>:<></>}
                                 {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
                                 </div>
                             </div>
-                            <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>
+                            {ingredientEditing === idx && user.id === target.user_id ? <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>:<></>}
                         </>
                     ))}
                     <div className='ingredients-container-add'>
