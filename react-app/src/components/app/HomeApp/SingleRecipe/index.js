@@ -27,7 +27,7 @@ const SingleRecipe = () => {
     const singleReview = reviews.filter(single => single.recipe_id === +id)
     const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
     console.log('here be yer spices', ingredientSet)
-    const [editing, setEditing] = useState(false)
+    const [editing, setEditing] = useState(-1)
     console.log('your single review', singleReview)
 
 
@@ -138,11 +138,12 @@ const SingleRecipe = () => {
                             <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user?.username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
-                                    {user.id === review.user_id ? <button onClick={() => setEditing(!editing)} className='single-butts'>Edit</button>:<></>}
+                                    {user.id === review.user_id ? <button onClick={() => setEditing(idx)} className='single-butts'>Edit</button>:<></>}
+                                    {editing === idx && user.id === review.user_id ? <button onClick={() => setEditing(-1)} className='single-butts'>Cancel</button>:<></>}
                                     {user.id === review.user_id ? <button onClick={handleDeleteReview(review.id)} className='single-butts'>Delete</button>:<></>}
                                     <span className="stars" style={{"--rating": `${review.rating}`}}></span>
                                 </div>
-                                <div>{editing === true && user.id === review.user_id ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
+                                <div>{editing === idx && user.id === review.user_id ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
 
                             </div>
                         ))}
