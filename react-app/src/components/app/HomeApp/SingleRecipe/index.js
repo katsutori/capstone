@@ -36,8 +36,6 @@ const SingleRecipe = () => {
     const [working, setWorking] = useState(false)
     const [editing, setEditing] = useState(-1)
     const [ingredientEditing, setIngredientEditing] = useState(-1)
-    console.log('your single review', singleReview)
-
 
     let rating = 0;
     const ratings = singleReview?.map(review => review.rating)
@@ -58,7 +56,6 @@ const SingleRecipe = () => {
     useEffect(() => {
         setIngredientEditing(-1)
     }, [ingredient])
-
 
     useEffect(() => {
         (async() => {
