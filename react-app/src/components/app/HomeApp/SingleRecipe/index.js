@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory, Link } from 'react-router-dom'
 
+// Import font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil, faXmark } from '@fortawesome/free-solid-svg-icons'
+
 // Import states
 import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
 import { getAllReviews, removeOneReview } from '../../../../store/review'
@@ -29,6 +33,7 @@ const SingleRecipe = () => {
     const target = recipes.find(single => single.id === +id)
     const singleReview = reviews.filter(single => single.recipe_id === +id)
     const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
+    const [working, setWorking] = useState(false)
     const [editing, setEditing] = useState(-1)
     const [ingredientEditing, setIngredientEditing] = useState(-1)
     console.log('your single review', singleReview)
@@ -117,15 +122,19 @@ const SingleRecipe = () => {
             </div>
             <div className='butt-section'>
                 <div className='single-ingredients'>
-                <h2 className='single-h2'>Ingredients:</h2>
+                    <div className='ingredients-container ing-controls'>
+                        <div className='ing-name ing-name-head'><h2 className='single-h2 ing-h2'>Ingredients: </h2></div>
+                        <div className='ing-butt-cont'>{target.user_id === user.id ? <button className='ingredient-tool-toggle' onClick={() => setWorking(!working)}><FontAwesomeIcon icon={faPencil} className='fa-ing' /></button>:<></>}</div>
+                    </div>
                     <div>
                     {ingredientSet?.map((one, idx) => (
                         <>
                             <div className='ingredients-container' key={idx}>
                                 <div className='ing-name'>{one.name}</div>
                                 <div className='ing-butt-cont'>
-                                {target.user_id === user.id ? <button onClick={() => setIngredientEditing(idx)} className='ing-butt'>Edit</button>:<></>}
-                                {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
+                                {working === true && ingredientEditing === idx &&  target.user_id === user.id ? <button onClick={() => setIngredientEditing(-1)} className='ing-butt'><FontAwesomeIcon icon={faXmark} className='fa-ing-close' /></button>:<></>}
+                                {working === true && target.user_id === user.id ? <button onClick={() => setIngredientEditing(idx)} className='ing-butt'>Edit</button>:<></>}
+                                {working === true && target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
                                 </div>
                             </div>
                             {ingredientEditing === idx && user.id === target.user_id ? <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>:<></>}
