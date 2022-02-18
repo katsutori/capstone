@@ -49,13 +49,13 @@ function AppNavigation() {
                                 <i className="fa fa-caret-down"></i>
                             </button>
                             <div className="dropdown-content">
-                            <Link to='/'>Breakfast</Link>
-                            <Link to='/'>Lunch</Link>
-                            <Link to='/'>Dinner</Link>
-                            <Link to='/'>Dessert</Link>
-                            <Link to='/'>Soup</Link>
-                            <Link to='/'>Salad</Link>
-                            <Link to='/'>Drink</Link>
+                            <Link to='/categories/Breakfast'>Breakfast</Link>
+                            <Link to='/categories/Lunch'>Lunch</Link>
+                            <Link to='/categories/Dinner'>Dinner</Link>
+                            <Link to='/categories/Dessert'>Dessert</Link>
+                            <Link to='/categories/Soup'>Soup</Link>
+                            <Link to='/categories/Salad'>Salad</Link>
+                            <Link to='/categories/Drink'>Drink</Link>
                             </div>
                     </div>
                     <div className="dropdown">
