@@ -1,6 +1,14 @@
 const LOAD_INGREDIENTS = 'ingredients/LOAD'
 const REMOVE_INGREDIENTS = 'ingredients/REMOVE'
 const ADD_INGREDIENTS = 'ingredients/ADD'
+const EDIT_INGREDIENTS = 'ingredients/EDIT'
+
+export const editIngredients = payload => {
+    return {
+        type: EDIT_INGREDIENTS,
+        payload
+    }
+}
 
 export const addIngredients = payload => {
     return {
@@ -68,6 +76,28 @@ export const getAllIngredients = recipeId => async dispatch => {
     }
 }
 
+export const editOneIngredient = payload => async dispatch => {
+    const response = await fetch(`/api/ingredients/${payload.ingId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const editedIng = await response.json()
+        dispatch(editIngredients(editedIng))
+        return editedIng
+    } else {
+        const data = await response.json()
+        if (data.errors) {
+            return { 'errors': data.errors };
+        } else {
+            return { 'errors': 'Something went wrong. Please try again.'}
+        }
+    }
+}
 
 const initialState = { entries: []}
 
@@ -80,6 +110,9 @@ const ingredientReducer = (state = initialState, action) => {
             newState = {...state}
             delete newState[action.payload]
             return newState
+        case EDIT_INGREDIENTS:
+            return { ...state, [action.payload.id]: action.id}
+
         default:
             return state
     }

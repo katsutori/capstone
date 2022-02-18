@@ -2,18 +2,25 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory, Link } from 'react-router-dom'
 
+// Import font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil, faXmark } from '@fortawesome/free-solid-svg-icons'
+
 // Import states
 import { getAllRecipes, removeRecipe } from '../../../../store/recipe'
 import { getAllReviews, removeOneReview } from '../../../../store/review'
 import { getAllIngredients } from '../../../../store/ingredient'
 import { deleteIngredient } from '../../../../store/ingredient'
 import placeholder from '../../../../img/placeholder.jpg'
+
+// Import CSS
 import './SingleRecipe.css'
 
 // Import Components
 import AddReviewForm from '../AddReviewForm'
 import EditReviewForm from '../EditReviewForm'
 import AddIngredientForm from '../AddIngredientForm'
+import EditIngredientForm from '../EditIngredientForm'
 
 const SingleRecipe = () => {
     const dispatch= useDispatch()
@@ -26,8 +33,9 @@ const SingleRecipe = () => {
     const target = recipes.find(single => single.id === +id)
     const singleReview = reviews.filter(single => single.recipe_id === +id)
     const ingredientSet = ingredient.filter(single => single.recipe_id === +id)
-    console.log('here be yer spices', ingredientSet)
-    const [editing, setEditing] = useState(false)
+    const [working, setWorking] = useState(false)
+    const [editing, setEditing] = useState(-1)
+    const [ingredientEditing, setIngredientEditing] = useState(-1)
     console.log('your single review', singleReview)
 
 
@@ -46,6 +54,10 @@ const SingleRecipe = () => {
     useEffect(() => {
         setEditing(false)
     }, [reviews])
+
+    useEffect(() => {
+        setIngredientEditing(-1)
+    }, [ingredient])
 
 
     useEffect(() => {
@@ -110,16 +122,23 @@ const SingleRecipe = () => {
             </div>
             <div className='butt-section'>
                 <div className='single-ingredients'>
-                <h2 className='single-h2'>Ingredients:</h2>
+                    <div className='ingredients-container ing-controls'>
+                        <div className='ing-name ing-name-head'><h2 className='single-h2 ing-h2'>Ingredients: </h2></div>
+                        <div className='ing-butt-cont'>{target.user_id === user.id ? <button className='ingredient-tool-toggle' onClick={() => setWorking(!working)}><FontAwesomeIcon icon={faPencil} className='fa-ing' /></button>:<></>}</div>
+                    </div>
                     <div>
                     {ingredientSet?.map((one, idx) => (
-                        <div className='ingredients-container' key={idx}>
-                            <div className='ing-name'>{one.name}</div>
-                            <div className='ing-butt-cont'>
-                            {target.user_id === user.id ? <button className='ing-butt'>Edit</button>:<></>}
-                            {target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
+                        <>
+                            <div className='ingredients-container' key={idx}>
+                                <div className='ing-name'>{one.name}</div>
+                                <div className='ing-butt-cont'>
+                                {working === true && ingredientEditing === idx &&  target.user_id === user.id ? <button onClick={() => setIngredientEditing(-1)} className='ing-butt'><FontAwesomeIcon icon={faXmark} className='fa-ing-close' /></button>:<></>}
+                                {working === true && target.user_id === user.id ? <button onClick={() => setIngredientEditing(idx)} className='ing-butt'>Edit</button>:<></>}
+                                {working === true && target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
+                                </div>
                             </div>
-                        </div>
+                            {ingredientEditing === idx && user.id === target.user_id ? <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>:<></>}
+                        </>
                     ))}
                     <div className='ingredients-container-add'>
                         {target.user_id === user.id ? <AddIngredientForm />:<></>}
@@ -138,11 +157,12 @@ const SingleRecipe = () => {
                             <p className='review-by'><span className='review-by-span'>Review by:</span> {review.user?.username}</p>
                             <p key={idx}>{review.review}</p>
                                 <div className='id-review'>
-                                    {user.id === review.user_id ? <button onClick={() => setEditing(!editing)} className='single-butts'>Edit</button>:<></>}
+                                    {user.id === review.user_id ? <button onClick={() => setEditing(idx)} className='single-butts'>Edit</button>:<></>}
+                                    {editing === idx && user.id === review.user_id ? <button onClick={() => setEditing(-1)} className='single-butts'>Cancel</button>:<></>}
                                     {user.id === review.user_id ? <button onClick={handleDeleteReview(review.id)} className='single-butts'>Delete</button>:<></>}
                                     <span className="stars" style={{"--rating": `${review.rating}`}}></span>
                                 </div>
-                                <div>{editing === true && user.id === review.user_id ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
+                                <div>{editing === idx && user.id === review.user_id ? <EditReviewForm reviewId={review.id}/>:<></>}</div>
 
                             </div>
                         ))}
