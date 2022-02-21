@@ -360,7 +360,7 @@
 
   .featured-container {
     width: 95% !important;
-    height: 500px !important;
+    height: 600px !important;
     grid-template-columns: 1fr 1fr !important;
     margin-bottom: 25px;
   }
