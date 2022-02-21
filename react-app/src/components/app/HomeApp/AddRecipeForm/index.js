@@ -162,7 +162,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -172,7 +172,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -182,7 +182,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -192,7 +192,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -202,7 +202,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
