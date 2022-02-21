@@ -457,4 +457,8 @@
     grid-template-rows: 1fr 1fr !important;
     justify-content: center;
   }
+
+  .browse-res {
+    padding: 2px 3px !important;
+  }
 }

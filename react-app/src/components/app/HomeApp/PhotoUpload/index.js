@@ -72,7 +72,7 @@ const UploadPicture = () => {
                     Only upload filetypes with (.png, .jpg, .jpeg, .gif) extensions.
                 </p>
                 <form className="upload-form-photo" onSubmit={handleSubmit}>
-                    <label className="file-button"> Browse Photos
+                    <label className="file-button browse-res"> Browse Photos
                     <input
                     className="file-button"
                     type="file"
