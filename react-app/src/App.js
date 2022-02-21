@@ -22,6 +22,7 @@ import NewRecipeForm from './components/app/HomeApp/AddRecipeForm';
 import EditRecipeForm from './components/app/HomeApp/EditRecipe';
 import UploadPicture from './components/app/HomeApp/PhotoUpload';
 import CategoryView from './components/app/HomeApp/CategoryView';
+import SearchView from './components/app/HomeApp/SearchView';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,7 +56,9 @@ function App() {
               <SplashPage view='signup'/>
             </Route>
             <Route>
-              <h1>Is not loading... Nada</h1>
+              <div className='category-container'>
+                  <h1 className='category-h1'>Is not loading... Nada</h1>
+              </div>
             </Route>
           </Switch>
         <Footer />
@@ -92,8 +95,13 @@ function App() {
         <Route path='/categories/:id' exact={true}>
           <CategoryView />
         </Route>
+        <Route path='/search/:id' exact={true}>
+            <SearchView />
+        </Route>
         <Route>
-          <h1>There's no food here.</h1>
+            <div className='category-container'>
+                <h1 className='category-h1'>Is not loading... Nada</h1>
+            </div>
         </Route>
       </Switch>
       <Footer />

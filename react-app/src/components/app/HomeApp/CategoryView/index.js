@@ -11,10 +11,13 @@ const CategoryView = () => {
     const {id} = useParams()
     const recipes = useSelector(state => state.recipeState.entries)
     const selected = recipes?.filter(one => one.categories[0].name === id)
+    const cats = ["Lunch", "Breakfast", "Snack", "Dinner", "Soup", "Salad", "Drinks", "Dessert"]
 
-    if (!selected) {
+    if (!selected || !cats.includes(id)) {
         return (
-            <h1>Is not loading... Nada</h1>
+            <div className='category-container'>
+                <h1 className='category-h1'>Is not loading... Nada</h1>
+            </div>
         )
     }
 
