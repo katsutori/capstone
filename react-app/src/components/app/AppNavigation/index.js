@@ -49,7 +49,7 @@ function AppNavigation() {
                             <Link to='/categories/Dessert'>Dessert</Link>
                             <Link to='/categories/Soup'>Soup</Link>
                             <Link to='/categories/Salad'>Salad</Link>
-                            <Link to='/categories/Drink'>Drink</Link>
+                            <Link to='/categories/Drinks'>Drinks</Link>
                             </div>
                     </div>
                     <div className="dropdown">
