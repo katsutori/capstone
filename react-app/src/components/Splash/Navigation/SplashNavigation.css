@@ -63,7 +63,7 @@
 .fa-nav-res {
     color: #666;
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 0px;
     padding: 5px;
 
 }
@@ -251,7 +251,8 @@
 }
 
 .fa-nav-res {
-  padding-left: 10px;
+  padding-left: 15px;
+  padding-right: 0px;
 }
 
 .res-margin {
@@ -292,12 +293,12 @@
 
 .res-margin-nest {
   background-color: white;
-  color: #666;
+  color: #ff564c;
   font-family: Arial, Helvetica, sans-serif;
   border: none;
   font-size: 17px;
   display: contents;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .menu-toggle {
@@ -312,9 +313,19 @@
 
 .carrot {
   margin-top: -3px;
-  margin-left: -3px;
+  margin-left: 0px;
+  color: #a66252;
 }
 
+.nested-cat {
+  color: #666;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 7px 0px;
+}
+
+.res-open {
+  font-weight: 600;
+}
 
 @media screen and (min-width: 800px) {
   .splash-navigation-mobile {
