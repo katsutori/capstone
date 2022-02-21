@@ -31,11 +31,11 @@ const EditRecipeForm = () => {
     const [description, setDescription] = useState(localStorage.getItem('description'))
     const [instructions, setInstructions] = useState(localStorage.getItem('instructions'))
     const [category, setCategory] = useState(localStorage.getItem('category'))
-    const [ingredient_one, setOne] = useState(localStorage.getItem('one'))
-    const [ingredient_two, setTwo] = useState(localStorage.getItem('two'))
-    const [ingredient_three, setThree] = useState(localStorage.getItem('three'))
-    const [ingredient_four, setFour] = useState(localStorage.getItem('four'))
-    const [ingredient_five, setFive] = useState(localStorage.getItem('five'))
+    const [ingredient_one] = useState(localStorage.getItem('one'))
+    const [ingredient_two] = useState(localStorage.getItem('two'))
+    const [ingredient_three] = useState(localStorage.getItem('three'))
+    const [ingredient_four] = useState(localStorage.getItem('four'))
+    const [ingredient_five] = useState(localStorage.getItem('five'))
 
     useEffect(() => {
         window.scrollTo(0, 0)
