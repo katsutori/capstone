@@ -98,6 +98,7 @@ function AppNavigation() {
                     {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Drinks'>Drinks</Link>:<></>}
                 {show === true ? <a className='mobile-nav-links' href="https://github.com/katsutori/capstone" target="_blank" rel="noreferrer">GitHub Repo</a>:<></>}
                 {show === true ? <a className='mobile-nav-links' href="https://www.linkedin.com/in/thien-dang-ct/" target="_blank" rel="noreferrer">LinkedIn</a>:<></>}
+                {show === true ? <LogoutButton />:<></>}
                 {show === true ? <div className='search-form-nav search-mobile'>
                     <form className='search-from' onSubmit={handleSubmit}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='fa-nav-res' />
@@ -108,6 +109,7 @@ function AppNavigation() {
                         />
                     </form>
                 </div>:<></>}
+
             </div>
 
 
