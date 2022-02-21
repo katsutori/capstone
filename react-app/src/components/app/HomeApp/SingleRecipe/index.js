@@ -134,7 +134,7 @@ const SingleRecipe = () => {
                                 {working === true && target.user_id === user.id ? <button onClick={handleDeleteIngredient(one.id)} className='ing-butt'>Delete</button>:<></>}
                                 </div>
                             </div>
-                            {ingredientEditing === idx && user.id === target.user_id ? <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>:<></>}
+                            {working === true && ingredientEditing === idx && user.id === target.user_id ? <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>:<></>}
                         </>
                     ))}
                     <div className='ingredients-container-add'>
