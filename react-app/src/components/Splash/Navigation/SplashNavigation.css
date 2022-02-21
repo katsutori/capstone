@@ -257,3 +257,62 @@
 .res-margin {
   margin: auto;
 }
+
+.splash-navigation-mobile {
+  z-index: 100;
+  display: block;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.mobile-nav-links {
+  display: block;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  font-weight: 400;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.mobile-nav-links:hover {
+  color: #ff564c;
+}
+
+.res-margin {
+  background-color: white;
+  color: #666;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  font-size: 18px;
+  display: contents;
+}
+
+.menu-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-logo-container {
+  padding-top: 10px;
+}
+
+
+@media screen and (min-width: 800px) {
+  .splash-navigation-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .splash-navigation-mobile {
+    display: block;
+  }
+
+  .main {
+    display: none;
+  }
+}
