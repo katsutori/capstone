@@ -461,4 +461,8 @@
   .browse-res {
     padding: 2px 3px !important;
   }
+
+  .delete-recipe-button {
+    text-align: left !important;
+  }
 }
