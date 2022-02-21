@@ -357,4 +357,77 @@
     border-radius: 3px;
 
   }
+
+  .featured-container {
+    width: 95% !important;
+    height: 500px !important;
+    grid-template-columns: 1fr 1fr !important;
+    margin-bottom: 25px;
+  }
+
+  .recipe-roll-container {
+    display: contents !important;
+  }
+
+  .new-recipe-form-container {
+    padding: 0px 10px;
+    width: 95% !important;
+  }
+
+  .category-container {
+    padding-bottom: 75px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 90%;
+  }
+
+  .single-recipe-container {
+    width: 95% !important;
+  }
+
+  .single-photo {
+    display: flex !important;
+    flex-direction: column-reverse;
+    padding-bottom: 15px !important;
+  }
+
+  .single-photo-container {
+    margin-bottom: 25px;
+  }
+
+  .butt-section {
+    grid-template-columns: none !important;
+    grid-template-rows: .5fr 2fr !important;
+  }
+
+  .ing-butt-cont {
+    padding-right: 0px;
+  }
+
+  .new-ing-form-container {
+    width: 100% !important;
+  }
+
+  .file-button {
+    margin-right: auto !important;
+    margin-left: auto !important;
+    margin-bottom: 10px;
+  }
+
+  .upload-form-h2 {
+    margin-top: -25px;
+  }
+
+  .new-ing-input {
+    width: 97% !important;
+  }
+
+  .edit-ing-form-container {
+    width: 100% !important;
+  }
+
+  .ing-buttons-container {
+    margin-bottom: 25px !important;
+  }
 }
