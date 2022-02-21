@@ -451,4 +451,10 @@
   .login-button:hover {
     color: #a66252;
   }
+
+  .cat-reviews {
+    grid-template-columns: none !important;
+    grid-template-rows: 1fr 1fr !important;
+    justify-content: center;
+  }
 }
