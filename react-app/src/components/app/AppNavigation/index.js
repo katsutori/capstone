@@ -9,14 +9,8 @@ import logo from '../../../img/logo.png'
 import './AppNavigation.css'
 
 function AppNavigation() {
-    const [show, setShow] = useState(false)
     const [formValue, setFormValue] = useState('')
     const history = useHistory()
-
-    const handleMenu = (e) => {
-        e.preventDefault()
-        setShow(!show)
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
