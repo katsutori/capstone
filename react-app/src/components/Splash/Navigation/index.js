@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faBars, faCaretSquareDown } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../../img/logo.png'
 import './SplashNavigation.css'
@@ -9,7 +9,13 @@ import './SplashNavigation.css'
 
 function SplashNavigation() {
     const [formValue, setFormValue] = useState('')
+    const [show, setShow] = useState(false)
     const history = useHistory()
+
+    const handleMenu = (e) => {
+        e.preventDefault()
+        setShow(!show)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -49,6 +55,17 @@ function SplashNavigation() {
                         <Link className='signup-button' to='/signup'> SIGN UP</Link>
                 </div>
 
+
+            </div>
+            <div className='splash-navigation-mobile'>
+                <div className='mobile-logo-container'>
+                    <Link to='/'><img className='header-logo' alt='logo' src={logo} /></Link>
+                </div>
+                <div className='menu-toggle'>{show === false ? <button className='mobile-nav-links  res-margin' onClick={handleMenu}>Menu <FontAwesomeIcon icon={faBars} className='fa-nav-res' /></button>:<button className='mobile-nav-links res-margin' onClick={handleMenu}>Menu <FontAwesomeIcon icon={faCaretSquareDown} className='fa-nav-res' /></button>}</div>
+                {show === true ? <a className='mobile-nav-links' href="https://github.com/katsutori/capstone" target="_blank" rel="noreferrer">GitHub Repo</a>:<></>}
+                {show === true ? <a className='mobile-nav-links' href="https://www.linkedin.com/in/thien-dang-ct/" target="_blank" rel="noreferrer">LinkedIn</a>:<></>}
+                {show === true ? <Link className='mobile-nav-links' to='/login'> LOG IN</Link>:<></>}
+                {show === true ? <Link className='mobile-nav-links' to='/signup'> SIGN UP</Link>:<></>}
             </div>
 
 
