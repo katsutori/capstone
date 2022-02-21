@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+
 
 
 // Import States
@@ -27,7 +26,6 @@ import SearchView from './components/app/HomeApp/SearchView';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector(state => state.session.user)
-  const recipes = useSelector(state => state.recipeState.entries)
   const dispatch = useDispatch();
 
   useEffect(() => {

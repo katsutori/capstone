@@ -79,7 +79,7 @@ const SingleRecipe = () => {
 
     const handleDeleteReview = (delete_id) => async (e) => {
         e.preventDefault()
-        console.log('here is your review id', delete_id)
+
         let reviewToDeleteId = delete_id
         const payload = {
             reviewToDeleteId,
@@ -127,7 +127,7 @@ const SingleRecipe = () => {
                     </div>
                     <div>
                     {ingredientSet?.map((one, idx) => (
-                        <>
+                        <div key={idx}>
                             <div className='ingredients-container' key={idx}>
                                 <div className='ing-name'>{one.name}</div>
                                 <div className='ing-butt-cont'>
@@ -137,7 +137,7 @@ const SingleRecipe = () => {
                                 </div>
                             </div>
                             {working === true && ingredientEditing === idx && user.id === target.user_id ? <div><EditIngredientForm ingredientId={one.id} ingredientName={one.name}/></div>:<></>}
-                        </>
+                        </div>
                     ))}
                     <div className='ingredients-container-add'>
                         {target.user_id === user.id ? <AddIngredientForm />:<></>}

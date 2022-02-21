@@ -14,8 +14,6 @@ const SearchView = () => {
     } else {
         query = [query]
     }
-    console.log(query)
-
 
     const selected = recipes?.filter(one => {
         for(let i = 0; i < query.length; i++) {
@@ -29,7 +27,6 @@ const SearchView = () => {
         }
     })
 
-    console.log(selected)
     if (!selected.length) {
         return (
             <div className='category-container'>

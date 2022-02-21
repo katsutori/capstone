@@ -32,7 +32,7 @@ const EditReviewForm = ({reviewId}) => {
             userId: user.id
         }
 
-        console.log(payload)
+
         const editedReview = await dispatch(editOneReview(payload))
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
-import { getAllIngredients, loadIngredients } from '../../../../store/ingredient';
+import { getAllIngredients } from '../../../../store/ingredient';
 import { addNewIngredient } from '../../../../store/ingredient';
 
 import './AddIngredient.css'
@@ -11,8 +11,6 @@ const AddIngredientForm = () => {
     const history = useHistory();
     const {id} = useParams()
 
-    const user = useSelector(state => state.session.user)
-
     const [errors, setErrors] = useState([]);
     const [ingredient, setIngredient] = useState("");
     const [toggle, setToggle] = useState(true)
@@ -20,7 +18,7 @@ const AddIngredientForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('yooooooour id',id)
+
         const payload = {
             name: ingredient,
             recipe_id: +id

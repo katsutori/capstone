@@ -1,6 +1,4 @@
-import { Link, useHistory } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaw, faStethoscope, faCut, faDog, faBone, faBell } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 import './SplashImage.css'
 
 import SignUpForm from '../../auth/SignUpForm'
@@ -8,12 +6,6 @@ import LoginForm from '../../auth/LoginForm'
 import logo from '../../../img/landing.png'
 
 function SplashImage({view}) {
-    const history = useHistory()
-    console.log(view)
-    const handleForm = (e) => {
-        e.preventDefault()
-        history.push('/login')
-    }
 
     if (view === 'normal') {
         return (

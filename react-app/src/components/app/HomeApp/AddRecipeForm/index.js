@@ -28,7 +28,7 @@ const NewRecipeForm = () => {
     const handlePost = async (e) => {
         e.preventDefault()
         let user_id = user.id
-        console.log('you user id',user_id)
+
         const newRecipe = await dispatch(newRecipes(name, description, instructions, category, ingredient_one, user_id))
 
         if(newRecipe.errors) {
@@ -162,7 +162,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -172,7 +172,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -182,7 +182,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -192,7 +192,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -202,7 +202,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Ingredient
+                    <label className='new-recipe-label'> Ingredient (optional)
                         <input
                             className='new-recipe-input'
                             type='text'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
-import { getAllIngredients, loadIngredients } from '../../../../store/ingredient';
+import { getAllIngredients } from '../../../../store/ingredient';
 import { editOneIngredient } from '../../../../store/ingredient';
 
 import './EditIngredientForm.css'
@@ -11,14 +11,12 @@ const EditIngredientForm = ({ingredientId, ingredientName}) => {
     const history = useHistory();
     const {id} = useParams()
 
-    const user = useSelector(state => state.session.user)
-
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState(ingredientName);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('your ing data', ingredientId, name)
+
         const payload = {
             ingId: ingredientId,
             name

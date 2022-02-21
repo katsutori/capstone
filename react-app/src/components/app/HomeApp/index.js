@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 // Import components
 import { getAllRecipes } from '../../../store/recipe'
@@ -10,7 +10,6 @@ import './HomeApp.css'
 
 const HomeApp = () => {
     const dispatch = useDispatch()
-    const recipes = useSelector(state=> state.recipeState.entries)
 
     useEffect(() => {
         (async() => {
