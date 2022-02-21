@@ -315,4 +315,12 @@
   .main {
     display: none;
   }
+
+  .left {
+    display: none;
+  }
+
+  .splash-content {
+    grid-template-columns: 1fr !important;
+  }
 }
