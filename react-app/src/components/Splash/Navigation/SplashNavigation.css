@@ -290,6 +290,16 @@
   display: contents;
 }
 
+.res-margin-nest {
+  background-color: white;
+  color: #666;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  font-size: 17px;
+  display: contents;
+  font-weight: 600;
+}
+
 .menu-toggle {
   display: flex;
   justify-content: center;
@@ -298,6 +308,11 @@
 
 .mobile-logo-container {
   padding-top: 10px;
+}
+
+.carrot {
+  margin-top: -3px;
+  margin-left: -3px;
 }
 
 
@@ -322,5 +337,13 @@
 
   .splash-content {
     grid-template-columns: 1fr !important;
+  }
+
+  .search-mobile {
+    width: 80%;
+    margin: 10px auto;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+
   }
 }

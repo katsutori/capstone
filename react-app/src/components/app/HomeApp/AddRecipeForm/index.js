@@ -37,6 +37,7 @@ const NewRecipeForm = () => {
 
         else if (!newRecipe.errors) {
 
+
         if (ingredient_one){
             await fetch('/api/recipes/new/ingredient', {
                 method: "POST",
