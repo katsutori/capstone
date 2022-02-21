@@ -79,7 +79,7 @@ const SingleRecipe = () => {
 
     const handleDeleteReview = (delete_id) => async (e) => {
         e.preventDefault()
-        console.log('here is your review id', delete_id)
+
         let reviewToDeleteId = delete_id
         const payload = {
             reviewToDeleteId,

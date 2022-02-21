@@ -20,7 +20,7 @@ const AddIngredientForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('yooooooour id',id)
+
         const payload = {
             name: ingredient,
             recipe_id: +id

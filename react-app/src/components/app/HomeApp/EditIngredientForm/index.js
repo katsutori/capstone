@@ -18,7 +18,7 @@ const EditIngredientForm = ({ingredientId, ingredientName}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('your ing data', ingredientId, name)
+
         const payload = {
             ingId: ingredientId,
             name

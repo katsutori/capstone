@@ -28,7 +28,7 @@ const NewRecipeForm = () => {
     const handlePost = async (e) => {
         e.preventDefault()
         let user_id = user.id
-        console.log('you user id',user_id)
+
         const newRecipe = await dispatch(newRecipes(name, description, instructions, category, ingredient_one, user_id))
 
         if(newRecipe.errors) {

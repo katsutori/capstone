@@ -9,7 +9,7 @@ import logo from '../../../img/landing.png'
 
 function SplashImage({view}) {
     const history = useHistory()
-    console.log(view)
+
     const handleForm = (e) => {
         e.preventDefault()
         history.push('/login')

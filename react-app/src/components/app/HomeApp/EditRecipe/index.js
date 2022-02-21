@@ -36,7 +36,7 @@ const EditRecipeForm = () => {
     const [ingredient_three, setThree] = useState(localStorage.getItem('three'))
     const [ingredient_four, setFour] = useState(localStorage.getItem('four'))
     const [ingredient_five, setFive] = useState(localStorage.getItem('five'))
-    console.log(category)
+
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])

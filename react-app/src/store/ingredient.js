@@ -32,7 +32,7 @@ export const removeIngredient = payload => {
 }
 
 export const addNewIngredient = payload => async dispatch => {
-    console.log('here is you trying to add ingredient', payload.name, payload.id)
+
     const response = await fetch(`/api/ingredients`, {
         method: 'POST',
         headers: {

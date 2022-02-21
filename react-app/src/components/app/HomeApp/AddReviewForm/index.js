@@ -19,7 +19,7 @@ const AddReviewForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('yooooooour id',id)
+
         const payload = {
             rating: parseInt(rating),
             review,
