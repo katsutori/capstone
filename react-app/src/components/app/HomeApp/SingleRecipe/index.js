@@ -91,7 +91,9 @@ const SingleRecipe = () => {
 
     if (!target) {
         return (
-            <h1>Is loading...</h1>
+            <div className='category-container'>
+                <h1 className='category-h1'>Is not loading... Nada</h1>
+            </div>
         )
     }
 

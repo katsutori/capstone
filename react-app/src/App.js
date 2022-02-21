@@ -55,7 +55,9 @@ function App() {
               <SplashPage view='signup'/>
             </Route>
             <Route>
-              <h1>Is not loading... Nada</h1>
+              <div className='category-container'>
+                  <h1 className='category-h1'>Is not loading... Nada</h1>
+              </div>
             </Route>
           </Switch>
         <Footer />
@@ -93,7 +95,9 @@ function App() {
           <CategoryView />
         </Route>
         <Route>
-          <h1>There's no food here.</h1>
+            <div className='category-container'>
+                <h1 className='category-h1'>Is not loading... Nada</h1>
+            </div>
         </Route>
       </Switch>
       <Footer />
