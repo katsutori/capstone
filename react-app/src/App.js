@@ -94,6 +94,9 @@ function App() {
         <Route path='/categories/:id' exact={true}>
           <CategoryView />
         </Route>
+        <Route path='/search/:id' exact={true}>
+            <SearchBusiness />
+        </Route>
         <Route>
             <div className='category-container'>
                 <h1 className='category-h1'>Is not loading... Nada</h1>
