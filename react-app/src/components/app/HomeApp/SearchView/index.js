@@ -8,11 +8,29 @@ import OneRoll from '../RecipeRoll/OneRoll';
 const SearchView = () => {
     const {id} = useParams()
     const recipes = useSelector(state => state.recipeState.entries)
+    let query = id;
+    if (query.includes(' ')) {
+        query = query.split(' ')
+    } else {
+        query = [query]
+    }
+    console.log(query)
 
 
-    const selected = recipes?.filter(one => one.categories[0].name === id)
+    const selected = recipes?.filter(one => {
+        for(let i = 0; i < query.length; i++) {
+            if (one?.name?.toLowerCase().includes(query[i].toLowerCase())) {
+                return one
+            } else if (one?.name?.toLowerCase().includes(query[i].substring(0, 3).toLowerCase())) {
+                return one
+            } else if (one?.name?.toLowerCase().includes(query[i].substring(query[i].length - 3).toLowerCase())) {
+                return one
+            }
+        }
+    })
 
-    if (!selected) {
+    console.log(selected)
+    if (!selected.length) {
         return (
             <div className='category-container'>
                 <h1 className='category-h1'>Is not loading... Nada</h1>
