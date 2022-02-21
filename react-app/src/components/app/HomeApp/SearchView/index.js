@@ -30,7 +30,7 @@ const SearchView = () => {
     if (!selected.length) {
         return (
             <div className='category-container'>
-                <h1 className='category-h1'>Is not loading... Nada</h1>
+                <h1 className='category-h1'>You search for <span className='category-h1-span'>{id}</span> cooked up no results.</h1>
             </div>
         )
     }
