@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
@@ -8,14 +8,8 @@ import './SplashNavigation.css'
 
 
 function SplashNavigation() {
-    const [show, setShow] = useState(false)
     const [formValue, setFormValue] = useState('')
     const history = useHistory()
-
-    const handleMenu = (e) => {
-        e.preventDefault()
-        setShow(!show)
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
