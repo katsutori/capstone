@@ -257,26 +257,3 @@
 .res-margin {
   margin: auto;
 }
-
-@media screen and (max-width: 800px) {
-    .signup-button {
-        display: none;
-    }
-    .drop-button {
-
-      display: block;
-    }
-
-    .main {
-      display: none;
-    }
-
-    .splash-search {
-      width: 100% !important;
-    }
-
-    .splash-submit {
-      height: 45.7px !important;
-
-    }
-}
