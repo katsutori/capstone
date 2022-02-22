@@ -3,31 +3,31 @@ const ADD_REVIEW = 'reviews/ADD'
 const EDIT_REVIEW = 'reviews/EDIT'
 const DELETE_REVIEW = 'reviews/DELETE'
 
-export const loadReviews = payload => {
+export const loadReviews = reviewData => {
     return {
         type: LOAD_REVIEWS,
-        payload
+        reviewData
     }
 }
 
-export const addReview = payload => {
+export const addReview = reviewData => {
     return {
         type: ADD_REVIEW,
-        payload
+        reviewData
     }
 }
 
-export const editReview = payload => {
+export const editReview = reviewData => {
     return {
         type: EDIT_REVIEW,
-        payload
+        reviewData
     }
 }
 
-export const deleteReview = payload => {
+export const deleteReview = reviewData => {
     return {
         type: DELETE_REVIEW,
-        payload
+        reviewData
     }
 }
 
@@ -43,14 +43,14 @@ export const getAllReviews = recipeId => async dispatch => {
     }
 }
 
-export const newReview = (payload) => async dispatch => {
+export const newReview = (reviewData) => async dispatch => {
 
-    const response = await fetch(`/api/recipe/${payload.recipeId}/reviews/`, {
+    const response = await fetch(`/api/recipe/${reviewData.recipeId}/reviews/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(reviewData)
     })
 
     if (response.ok) {
@@ -68,14 +68,14 @@ export const newReview = (payload) => async dispatch => {
     }
 }
 
-export const editOneReview = payload => async dispatch => {
+export const editOneReview = reviewData => async dispatch => {
 
-    const response = await fetch(`/api/recipe/${payload.recipeId}/reviews/${payload.id}/`, {
+    const response = await fetch(`/api/recipe/${reviewData.recipeId}/reviews/${reviewData.id}/`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(reviewData)
     })
 
 
@@ -93,20 +93,20 @@ export const editOneReview = payload => async dispatch => {
     }
 }
 
-export const removeOneReview = payload => async dispatch => {
+export const removeOneReview = reviewData => async dispatch => {
 
-    const response = await fetch(`/api/recipe/${payload.recipeId}/reviews/${payload.reviewToDeleteId}/`, {
+    const response = await fetch(`/api/recipe/${reviewData.recipeId}/reviews/${reviewData.reviewToDeleteId}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(reviewData)
     })
 
     if (response.ok) {
         const deleteMessage = await response.json()
 
-        dispatch(deleteReview(payload))
+        dispatch(deleteReview(reviewData))
         return deleteMessage
     }
 }
@@ -117,24 +117,13 @@ const reviewReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
         case LOAD_REVIEWS:
-            return { ...state, entries: [...action.payload.reviews]}
+            return { ...state, entries: [...action.reviewData.reviews]}
         case ADD_REVIEW:
             newState = { ...state }
             return { ...newState }
         case EDIT_REVIEW:
             newState = { ...state }
             return { ...newState }
-        case DELETE_REVIEW:
-            newState = { ...state }
-
-            let target = action.payload.reviewToDeleteId
-            let removing = newState.entries.find(review => review.id === target)
-            let idx = newState.entries.indexOf(removing)
-
-            let stateOne = newState.entries.slice(0, idx)
-            let stateTwo = newState.entries.slice(idx + 1)
-
-            return { ...newState, entries: [...stateOne, ...stateTwo] }
         default:
             return state;
     }
