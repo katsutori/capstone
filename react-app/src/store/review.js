@@ -120,12 +120,9 @@ const reviewReducer = (state = initialState, action) => {
             return { ...state, entries: [...action.payload.reviews]}
         case ADD_REVIEW:
             newState = { ...state }
-
-
             return { ...newState }
         case EDIT_REVIEW:
             newState = { ...state }
-
             return { ...newState }
         case DELETE_REVIEW:
             newState = { ...state }
@@ -134,10 +131,10 @@ const reviewReducer = (state = initialState, action) => {
             let removing = newState.entries.find(review => review.id === target)
             let idx = newState.entries.indexOf(removing)
 
-            let stateHalf1 = newState.entries.slice(0, idx)
-            let stateHalf2 = newState.entries.slice(idx + 1)
+            let stateOne = newState.entries.slice(0, idx)
+            let stateTwo = newState.entries.slice(idx + 1)
 
-            return { ...newState, entries: [...stateHalf1, ...stateHalf2] }
+            return { ...newState, entries: [...stateOne, ...stateTwo] }
         default:
             return state;
     }
