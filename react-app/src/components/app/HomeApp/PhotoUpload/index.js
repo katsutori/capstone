@@ -56,7 +56,9 @@ const UploadPicture = () => {
 
     if(!single) {
         return (
-            <h1 className='roll-heading'>Whelp! There's nothing here.</h1>
+            <div className='category-container'>
+                  <h1 className='category-h1'>Is not loading... Nada</h1>
+              </div>
         )
     }
 
