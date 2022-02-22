@@ -5,6 +5,7 @@ import { useDispatch} from 'react-redux'
 import { getAllRecipes } from '../../../store/recipe'
 import FeaturedRecipe from './Featured'
 import RecipeRoll from './RecipeRoll'
+import Scroll from './Scroll'
 import './HomeApp.css'
 
 
@@ -27,6 +28,7 @@ const HomeApp = () => {
                 <FeaturedRecipe />
                 <RecipeRoll />
             </div>
+            <Scroll />
         </>
     )
 }
