@@ -1,11 +1,11 @@
-const GET_REVIEWS = 'reviews/LOAD'
+const LOAD_REVIEWS = 'reviews/LOAD'
 const ADD_REVIEW = 'reviews/ADD'
 const EDIT_REVIEW = 'reviews/EDIT'
 const DELETE_REVIEW = 'reviews/DELETE'
 
 export const loadReviews = reviewData => {
     return {
-        type: GET_REVIEWS,
+        type: LOAD_REVIEWS,
         reviewData
     }
 }
@@ -116,7 +116,7 @@ const initialState = { entries: [] }
 const reviewReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
-        case GET_REVIEWS:
+        case LOAD_REVIEWS:
             return { ...state, entries: [...action.reviewData.reviews]}
         case ADD_REVIEW:
             newState = { ...state }
