@@ -84,20 +84,20 @@ function AppNavigation() {
                 </div>
 
                 <div className='menu-toggle'>{show === false ? <button className='mobile-nav-links  res-margin' onClick={handleMenu}>Menu <FontAwesomeIcon icon={faBars} className='fa-nav-res' /></button>:<button className='mobile-nav-links res-margin' onClick={handleMenu}>Menu <FontAwesomeIcon icon={faCaretSquareDown} className='fa-nav-res' /></button>}</div>
-                {show === true ? <Link className='mobile-nav-links' to='/recipes/new'>Add Recipe</Link>:<></>}
+                {show === true ? <Link onClick={() => setShow(false)} className='mobile-nav-links' to='/recipes/new'>Add Recipe</Link>:<></>}
                 {show === true ?
                 <div className='menu-toggle'>{cat === false ? <button className='mobile-nav-links  res-margin-nest' onClick={handleCat}>Categories<FontAwesomeIcon icon={faCaretDown} className='fa-nav-res carrot' /></button>:<button className='mobile-nav-links res-margin-nest res-open' onClick={handleCat}>Categories<FontAwesomeIcon icon={faXmarkCircle} className='fa-nav-res carrot' /></button>}</div>
 
                 :<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Breakfast'>Breakfast</Link>:<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Lunch'>Lunch</Link>:<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Dinner'>Dinner</Link>:<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Dessert'>Dessert</Link>:<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Soup'>Soup</Link>:<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Salad'>Salad</Link>:<></>}
-                    {cat === true ? <Link className='mobile-nav-links nested-cat' to='/categories/Drinks'>Drinks</Link>:<></>}
-                {show === true ? <a className='mobile-nav-links' href="https://github.com/katsutori/capstone" target="_blank" rel="noreferrer">GitHub Repo</a>:<></>}
-                {show === true ? <a className='mobile-nav-links' href="https://www.linkedin.com/in/thien-dang-ct/" target="_blank" rel="noreferrer">LinkedIn</a>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Breakfast'>Breakfast</Link>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Lunch'>Lunch</Link>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Dinner'>Dinner</Link>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Dessert'>Dessert</Link>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Soup'>Soup</Link>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Salad'>Salad</Link>:<></>}
+                    {cat === true ? <Link onClick={() => setCat(false)} className='mobile-nav-links nested-cat' to='/categories/Drinks'>Drinks</Link>:<></>}
+                {show === true ? <a onClick={() => setShow(false)} className='mobile-nav-links' href="https://github.com/katsutori/capstone" target="_blank" rel="noreferrer">GitHub Repo</a>:<></>}
+                {show === true ? <a onClick={() => setShow(false)} className='mobile-nav-links' href="https://www.linkedin.com/in/thien-dang-ct/" target="_blank" rel="noreferrer">LinkedIn</a>:<></>}
                 {show === true ? <LogoutButton />:<></>}
                 {show === true ? <div className='search-form-nav search-mobile'>
                     <form className='search-from' onSubmit={handleSubmit}>
