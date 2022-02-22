@@ -22,7 +22,7 @@ const NewRecipeForm = () => {
     const [ingredient_five, setFive] = useState("")
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo({top:0, behavior: 'smooth'})
       }, [])
 
     const handlePost = async (e) => {

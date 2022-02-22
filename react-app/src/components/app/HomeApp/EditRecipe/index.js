@@ -38,7 +38,7 @@ const EditRecipeForm = () => {
     const [ingredient_five] = useState(localStorage.getItem('five'))
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo({top:0, behavior: 'smooth'})
       }, [])
 
     const handlePost = async (e) => {
