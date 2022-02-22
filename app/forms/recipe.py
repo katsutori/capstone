@@ -3,10 +3,15 @@ from wtforms import StringField, SelectField, IntegerField, SubmitField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Recipe, Category
 
+def description_length(form, field):
+    script = field.data
+    if len(script) > 255:
+        raise ValidationError('Your description is too long.')
+
 
 class NewRecipeForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired(), description_length])
     instructions = StringField('Instructions', validators=[DataRequired()])
     category = SelectField('category', choices=["Lunch", "Breakfast", "Snack", "Dinner", "Soup", "Salad", "Drinks", "Dessert"], validators=[DataRequired()])
     user_id = IntegerField('user id')

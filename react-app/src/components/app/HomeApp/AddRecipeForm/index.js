@@ -117,7 +117,7 @@ const NewRecipeForm = () => {
                     ))}
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Recipe Name
+                    <label className='new-recipe-label'> Recipe Name <span className='counter'>(max 255 chars. count: {name.length})</span>
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -128,7 +128,7 @@ const NewRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Description
+                    <label className='new-recipe-label'> Description <span className='counter'>(max 255 chars. count: {description.length})</span>
                         <textarea
                             className='new-recipe-input'
                             type='text'
