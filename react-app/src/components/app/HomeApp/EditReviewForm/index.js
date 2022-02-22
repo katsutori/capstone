@@ -41,8 +41,6 @@ const EditReviewForm = ({reviewId}) => {
         }
         else if (!editedReview.errors) {
             await dispatch(getAllReviews(id))
-            setRating(0)
-            setReview("")
             history.push(`/recipes/${id}`)
         }
     }
