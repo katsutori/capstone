@@ -15,6 +15,9 @@ Where else to go get ideas for cheap eats when you are a broke college or boot c
 # Technologies Used
 <img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=50/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"  height=40/>
 
+Broke & Hangry was developed using React, Redux, Flask, and SQLAlchemy to create a model-view-controller (MVC) application. Heroku was used for production hosting, and AWS S3 was used to host files uploaded by users for use with the application.
+
+
 # Clone Broke & Hangry
 
 1. Clone this repository (only this branch)
@@ -59,6 +62,11 @@ Where else to go get ideas for cheap eats when you are a broke college or boot c
    ```bash
    npm start
    ```
+# Key Functionalities
+## Recipes, Categories, and Ingredients
+Broke & Hangry allows users to liberally add recipes to the application to include recipe information and ingredients (independent of recipe data). Users also attribute recipes to categories that were predefined by the application developer. Recipes can also accommodate a featured image per recipe after a recipe's creation.
+## Reviews
+Users can add reviews to any recipe on Broke & Hangry, which includes a star rating from one through five. Each recipe averages the total ratings and displays the results when a recipe is "READ".
 
 # Features Highlight
 ## Interactive Recipe Page
@@ -75,6 +83,12 @@ What's the point in having reviews if you can't display a quick one-two for user
 
 ![](./images/star1.jpg)
 
+## Responsive Design
+Broke & Hangry was designed for students, so they're either on their phones, tablets, or occasionally, their laptops when not paying attention in class. This application's navigation and containers switch from desktop view to mobile view at 820px and then again at
+![](./images/mobile1.jpg)
+![](./images/mobile2.jpg)
+![](./images/tablet.jpg)
+
 # Challenges Highlight
 ## Interactive Recipe Page
 So many components. So many moving parts. When one bug is squashed, another shows up. Bugs are like roaches, except they're the developer's fault. Developing an interactive page has its challenges when your conditionals are logically flawed. Don't not logic.
@@ -86,3 +100,8 @@ Showing and hiding controls was initially a problem when using boolean triggers.
 ## PATCHING through Join Tables
 Documentation is great until you cannot find them. When a PATCH requires a change to multiple tables, it was not easy. Well, it was. It just took some time to try different keyboard punches to get it to work. Remove your join then add a new one.
 ![](./images/route.jpg)
+
+## Future Implementations
+* Photo gallery that allows users to upload their interpretation of each recipe
+* Cook book that allows users to save recipes to their favorite lists
+* User profiles to allow users to view other users public information
