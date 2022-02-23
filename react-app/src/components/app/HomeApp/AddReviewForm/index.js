@@ -38,6 +38,7 @@ const AddReviewForm = () => {
             setRating(0)
             setReview("")
             setToggle(true)
+            setErrors([])
             history.push(`/recipes/${id}`)
         }
     }

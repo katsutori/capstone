@@ -34,6 +34,7 @@ const AddIngredientForm = () => {
             await dispatch(getAllIngredients())
             setIngredient("")
             setToggle(true)
+            setErrors([])
             history.push(`/recipes/${id}`)
         }
     }
