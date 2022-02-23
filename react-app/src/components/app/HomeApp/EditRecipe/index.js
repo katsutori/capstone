@@ -10,9 +10,9 @@ const EditRecipeForm = () => {
     const { id } = useParams()
     const recipes = useSelector(state => state.recipeState.entries)
     const target = recipes.find(single => single.id === +id)
+    const user = useSelector(state => state.session.user)
 
-
-    if (target) {
+    if (target && target.user_id === user.id) {
         localStorage.setItem('name', target.name)
         localStorage.setItem('description', target.description)
         localStorage.setItem('instructions', target.instructions)
@@ -25,7 +25,6 @@ const EditRecipeForm = () => {
     }
 
 
-    const user = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState(localStorage.getItem('name'))
     const [description, setDescription] = useState(localStorage.getItem('description'))
@@ -120,9 +119,20 @@ const EditRecipeForm = () => {
 
     if(!target) {
         return (
-            <h1>There's nothing here.</h1>
+            <div className='category-container'>
+                  <h1 className='category-h1'>Is not loading... Nada</h1>
+            </div>
         )
     }
+
+    if(user.id !== target.user_id) {
+        return (
+            <div className='category-container'>
+                  <h1 className='category-h1'>What are you trying to do?</h1>
+            </div>
+        )
+    }
+
 
     return (
         <div className='new-recipe-form-container'>
@@ -134,7 +144,7 @@ const EditRecipeForm = () => {
                     ))}
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Recipe Name
+                    <label className='new-recipe-label'> Recipe Name* <span className='counter'>(max 255 chars. count: {name.length})</span>
                         <input
                             className='new-recipe-input'
                             type='text'
@@ -145,7 +155,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Description
+                    <label className='new-recipe-label'> Description* <span className='counter'>(max 255 chars. count: {description.length})</span>
                         <textarea
                             className='new-recipe-input'
                             type='text'
@@ -156,7 +166,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Instructions
+                    <label className='new-recipe-label'> Instructions*
                         <textarea
                             className='new-recipe-input'
                             type='text'
@@ -167,7 +177,7 @@ const EditRecipeForm = () => {
                     </label>
                 </div>
                 <div>
-                    <label className='new-recipe-label'> Choose a Category
+                    <label className='new-recipe-label'> Choose a Category*
                     <select className='new-recipe-select' value={category} onChange={ e => setCategory(e.target.value)}>
                                 <option  value="Breakfast">Breakfast</option>
                                 <option value="Lunch">Lunch</option>
@@ -187,6 +197,7 @@ const EditRecipeForm = () => {
             </form>
         </div>
     )
+
 }
 
 export default EditRecipeForm
