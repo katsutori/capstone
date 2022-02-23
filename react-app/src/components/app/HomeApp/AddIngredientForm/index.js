@@ -38,11 +38,10 @@ const AddIngredientForm = () => {
         }
     }
 
-
     return (
         <div className='new-ing-form-container'>
             <form className='new-ing-form' onSubmit={handleSubmit}>
-                {errors.length ?
+                {errors.length && toggle === false ?
                 <div className="error-container">
                     <ul>
                     {errors.map((error, ind) => (
