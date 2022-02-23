@@ -84,9 +84,11 @@ What's the point in having reviews if you can't display a quick one-two for user
 ![](./images/star1.jpg)
 
 ## Responsive Design
-Broke & Hangry was designed for students, so they're either on their phones, tablets, or occasionally, their laptops when not paying attention in class. This application's navigation and containers switch from desktop view to mobile view at 820px and then again at
+Broke & Hangry was designed for students, so they're either on their phones, tablets, or occasionally, their laptops when not paying attention in classes. This application's navigation and containers switch from desktop view to mobile view at 820px to improve user experience on all devices.
+## Mobile Phone View
 ![](./images/mobile1.jpg)
 ![](./images/mobile2.jpg)
+## Tablet View
 ![](./images/tablet.jpg)
 
 # Challenges Highlight
