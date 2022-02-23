@@ -30,6 +30,7 @@ const EditIngredientForm = ({ingredientId, ingredientName}) => {
         }
         else if (!editedIng.errors) {
             await dispatch(getAllIngredients())
+            setErrors([])
             history.push(`/recipes/${id}`)
         }
     }
