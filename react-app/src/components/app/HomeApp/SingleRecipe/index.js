@@ -104,7 +104,7 @@ const SingleRecipe = () => {
                 <div className='single-by'>By {target.user.username}</div>
             </div>
             <div className='single-photo'>
-                <div>
+                <div className='thoughts-container'>
                     <h2 className='single-h2'>{target.user.username}'s thoughts:</h2>
                     <p className='single-script'>{target.description}</p>
                 </div>
