@@ -107,3 +107,4 @@ Documentation is great until you cannot find them. When a PATCH requires a chang
 * Photo gallery that allows users to upload their interpretation of each recipe
 * Cook book that allows users to save recipes to their favorite lists
 * User profiles to allow users to view other users public information
+* Notifications for when other users leave a review on your recipe
