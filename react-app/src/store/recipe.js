@@ -87,7 +87,7 @@ export const editingRecipe = (name, description, instructions, category, ingredi
 }
 
 export const newRecipes = (name, description, instructions, category, ingredient_one, user_id) => async dispatch => {
-    console.log('heeeeeeeeeeeeeeeeeeello')
+
     const response = await fetch(`/api/recipes/new`, {
         method: 'POST',
         headers: {
@@ -104,9 +104,11 @@ export const newRecipes = (name, description, instructions, category, ingredient
     })
     if(response.ok) {
         const newRecipe = await response.json()
+        console.log(newRecipe)
         const getNewRecipe = await fetch(`/api/recipes/${newRecipe.id}`)
 
         const gotRecipe = await getNewRecipe.json()
+        console.log(gotRecipe)
         dispatch(addRecipe(gotRecipe))
 
         return newRecipe

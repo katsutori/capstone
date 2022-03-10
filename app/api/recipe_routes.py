@@ -88,6 +88,7 @@ def get_user(user):
 
 @recipe_routes.route('/<int:id>', methods=['GET'])
 def one_recipes(id):
+    print('i am heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeere')
     recipe_data = Recipe.query.filter(Recipe.id == id) \
                                 .options(joinedload(Recipe.ingredients)) \
                                 .options(joinedload(Recipe.user)) \
