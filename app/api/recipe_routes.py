@@ -86,6 +86,74 @@ def get_user(user):
     data.append(user_set)
     return data
 
+@recipe_routes.route('/<int:id>', methods=['GET'])
+def one_recipes(id):
+    recipe_data = Recipe.query.filter(Recipe.id == id) \
+                                .options(joinedload(Recipe.ingredients)) \
+                                .options(joinedload(Recipe.user)) \
+                                .options(joinedload(Recipe.reviews).options(joinedload(Review.user))) \
+                                .options(joinedload(Recipe.categories)) \
+                                .options(joinedload(Recipe.photos)) \
+                                .all()
+
+    data = []
+
+    for recipe in recipe_data:
+        ingredients = [ingredient.to_dict() for ingredient in recipe.ingredients]
+        # reviews_set = [review.to_dict() for review in recipe.reviews]
+        review_set = get_reviews(recipe.reviews)
+        category_set = [category.to_dict() for category in recipe.categories]
+        photo_set = [photo.to_dict() for photo in recipe.photos]
+
+        each = {
+            "id": recipe.id,
+            "name": recipe.name,
+            "description": recipe.description,
+            "instructions": recipe.instructions,
+            "user_id": recipe.user_id,
+            "time_created": recipe.time_created,
+            "time_update": recipe.time_updated,
+            "user": recipe.user.to_dict(),
+            "ingredients": ingredients,
+            "reviews": review_set,
+            "categories": category_set,
+            "photos": photo_set
+        }
+
+        data.append(each)
+    return {"data": data}
+
+
+def get_reviews(reviews):
+    data =[]
+    for review in reviews:
+        user_data = get_user(review.user)
+
+        review_set = {
+            'id': review.id,
+            'rating': review.rating,
+            "recipe_id": review.recipe_id,
+            "review": review.review,
+            "time_created": review.time_created,
+            "time_updates": review.time_updated,
+            "user_id": review.user_id,
+            "user": user_data
+        }
+
+        data.append(review_set)
+    return data
+
+
+def get_user(user):
+    data = []
+
+    user_set = {
+            "id": user.id,
+            "username": user.username
+        }
+
+    data.append(user_set)
+    return data
 
 @recipe_routes.route('/new', methods=['POST'])
 @login_required
