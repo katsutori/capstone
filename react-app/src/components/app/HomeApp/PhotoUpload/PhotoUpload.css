@@ -80,6 +80,22 @@ input[type='file'] {
     cursor: pointer;
 }
 
+.file-upload-button-ready {
+    color: #fff;
+    background-color: rgb(8, 235, 38);
+    border: 2px solid rgb(8, 235, 38);
+    transition: color .15s ease-in-out;
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .upload-pic {
     max-width: 408px;
     width: 100%;
