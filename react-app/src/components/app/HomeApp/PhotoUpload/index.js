@@ -82,7 +82,7 @@ const UploadPicture = () => {
                     onChange={updateImage}
                     />
                     </label>
-                    {selectImage === true ? <button className='file-upload-button' type="submit">Upload Photo</button>:<button className='file-upload-button' type="submit" disabled>Please Select a File</button> }
+                    {selectImage === true ? <button className='file-upload-button-ready' type="submit">Upload Photo</button>:<button className='file-upload-button' type="submit" disabled>Please Select a File</button> }
                     {(imageLoading)&& <p>Loading...</p>}
                 </form>
             </div>
